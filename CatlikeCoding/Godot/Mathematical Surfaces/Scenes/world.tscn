@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://5kc0mebj3x2g"]
+
+[ext_resource type="PackedScene" uid="uid://beborlnluhew3" path="res://Scenes/graph.tscn" id="1_lllvd"]
+[ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="1_pqmig"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m0b7s"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_yl5el"]
+sky_material = SubResource("ProceduralSkyMaterial_m0b7s")
+
+[sub_resource type="Environment" id="Environment_j1x7o"]
+background_mode = 2
+sky = SubResource("Sky_yl5el")
+tonemap_mode = 3
+ssr_depth_tolerance = 0.01
+ssao_enabled = true
+ssil_radius = 6.38
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_energy = 0.22
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j1x7o")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.789084, 0.473998, -0.390733, 0, 0.636078, 0.771624, 0.614285, -0.608877, 0.501919, 0, 3, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.885141, 0.283825, -0.36874, 0, 0.792439, 0.609952, 0.465323, -0.539893, 0.70142, -1.39005, 2.22217, 2.42981)
+current = true
+fov = 60.0
+script = ExtResource("1_pqmig")
+
+[node name="Graph" parent="." instance=ExtResource("1_lllvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145, -0.5)
+resolution = 100
+function_name = 4
