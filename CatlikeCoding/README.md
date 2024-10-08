@@ -2,4 +2,4 @@
 
 - Following along the tutorials made by Jasper Flickfor the Unity and Godot Engines.
 
-- To the best of my ability, I've translated some of the code originally written for Unity (in C#) into Godot, using GDScript.
+- To the best of my ability, I've translated some of the tutorials/code originally written for Unity (in C#) into Godot, using GDScript.
