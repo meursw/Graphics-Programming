@@ -5,7 +5,9 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m0b7s"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_bottom_color = Color(0.12093, 0.122757, 0.122307, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_curve = 0.0146409
 
 [sub_resource type="Sky" id="Sky_yl5el"]
 sky_material = SubResource("ProceduralSkyMaterial_m0b7s")
@@ -37,6 +39,6 @@ fov = 60.0
 script = ExtResource("1_pqmig")
 
 [node name="Graph" parent="." instance=ExtResource("1_lllvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145, -0.5)
-resolution = 100
+transform = Transform3D(-0.115665, 0.993288, 0, -0.993288, -0.115665, 0, 0, 0, 1, 0, 0, 0)
+resolution = 60
 function_name = 4
