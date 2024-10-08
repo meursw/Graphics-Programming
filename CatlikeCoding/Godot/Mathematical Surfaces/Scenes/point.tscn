@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn77lgoi5hk7r"]
+
+[ext_resource type="Shader" uid="uid://dt0worrln1xlk" path="res://Shaders/point_surf_vis.tres" id="1_pk80s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wc0e"]
+render_priority = 0
+shader = ExtResource("1_pk80s")
+shader_parameter/Roughness = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_oow5b"]
+material = SubResource("ShaderMaterial_6wc0e")
+
+[node name="Point" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_oow5b")
