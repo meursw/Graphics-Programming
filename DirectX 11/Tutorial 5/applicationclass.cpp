@@ -3,7 +3,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include "applicationclass.h"
 
-
 ApplicationClass::ApplicationClass()
 {
 	m_Direct3D = 0;
@@ -23,11 +22,10 @@ ApplicationClass::~ApplicationClass()
 }
 
 
-bool ApplicationClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
+bool ApplicationClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, InputClass* input)
 {
 	char textureFilename[128];
 	bool result;
-
 
 	// Create and initialize the Direct3D object.
 	m_Direct3D = new D3DClass;
@@ -42,14 +40,17 @@ bool ApplicationClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	// Create the camera object.
 	m_Camera = new CameraClass;
 
+	// Set the input class
+	m_Input = input;
+
 	// Set the initial position of the camera.
-	m_Camera->SetPosition(0.0f, 0.0f, -3.0f);
+	m_Camera->SetPosition(0.0f, 0.0f, -4.0f);
 
 	// Create and initialize the model object.
 	m_Model = new ModelClass;
 
 	// Set the name of the texture file that we will be loading.
-	strcpy_s(textureFilename, "../DX11/stone01.tga");
+	strcpy_s(textureFilename, "Assets/gaster01.tga");
 
 	result = m_Model->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), textureFilename);
 	if(!result)
@@ -59,7 +60,7 @@ bool ApplicationClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	// Create and initialize the texture shader object.
-	m_TextureShader = new TextureShaderClass;
+	 m_TextureShader = new TextureShaderClass;
 
 	result = m_TextureShader->Initialize(m_Direct3D->GetDevice(), hwnd);
 	if(!result)
@@ -136,6 +137,13 @@ bool ApplicationClass::Render()
 
 	// Generate the view matrix based on the camera's position.
 	m_Camera->Render();
+
+	if (m_Input->IsKeyDown(VK_UP))
+		m_Camera->SetPosition(0.0f, 0.0f, m_Camera->GetPosition().z + 0.1f);
+
+	if (m_Input->IsKeyDown(VK_DOWN))
+		m_Camera->SetPosition(0.0f, 0.0f, m_Camera->GetPosition().z - 0.1f);
+
 
 	// Get the world, view, and projection matrices from the camera and d3d objects.
 	m_Direct3D->GetWorldMatrix(worldMatrix);

@@ -41,7 +41,9 @@ public:
     int GetHeight();
 
 private:
-	bool LoadTarga32Bit(char*);
+	bool LoadTargaBit(char*);
+	//bool LoadTarga32Bit(unsigned char* targaImage, FILE* filePtr);
+	//bool LoadTarga24Bit(unsigned char* targaImage, FILE* filePtr);
 
 private:
 	unsigned char* m_targaData;

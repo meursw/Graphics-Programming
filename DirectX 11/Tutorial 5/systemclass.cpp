@@ -42,7 +42,7 @@ bool SystemClass::Initialize()
 	// Create and initialize the application class object.  This object will handle rendering all the graphics for this application.
 	m_Application = new ApplicationClass;
 
-	result = m_Application->Initialize(screenWidth, screenHeight, m_hwnd);
+	result = m_Application->Initialize(screenWidth, screenHeight, m_hwnd, m_Input);
 	if(!result)
 	{
 		return false;
