@@ -39,5 +39,14 @@ fov = 60.0
 script = ExtResource("1_pqmig")
 
 [node name="Graph" parent="." instance=ExtResource("1_lllvd")]
-resolution = 80
-function_name = 4
+resolution = 90
+transition_mode = 1
+function_name = 0
+function_duration = 1.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+
+[node name="FunctionTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="FunctionTimer" to="Graph" method="_on_function_timer_timeout"]

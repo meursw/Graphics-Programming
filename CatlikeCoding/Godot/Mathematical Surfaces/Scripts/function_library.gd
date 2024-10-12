@@ -7,12 +7,27 @@ static var functions: Array[Callable] = [Wave, MultiWave, Ripple, Sphere, Torus]
 static func get_function(name: FunctionName) -> Callable:
 	return functions[int(name)]
 
+static func get_next_function(name: FunctionName) -> FunctionName:
+	return name + 1 if int(name) < functions.size() - 1 else 0
+
+static func get_random_function() -> FunctionName:
+	return randi_range(0, functions.size() - 1)
+
+static func get_random_func_other_than(name: FunctionName) -> FunctionName:
+	var choice = randi_range(1, functions.size() - 1)
+	return 0 if choice == name else choice
+	
 static func Wave(u: float, v: float, t: float) -> Vector3:
 	var p: Vector3
 	p.x = u
-	p.y = sin(PI * (u + v + t))
+	p.y = 0.5 * sin(PI * (u + v + t) * 0.75)
 	p.z = v
 	return p
+	
+static func Morph(u: float, v: float, t: float, from: Callable, to: Callable, progress: float) -> Vector3:
+	var from_vec: Vector3 = from.call(u, v, t)
+	var to_vec: Vector3 = to.call(u, v, t)
+	return from_vec.lerp(to_vec, smoothstep(0.0, 1.0, progress))
 
 static func MultiWave(u: float, v: float, t: float) -> Vector3:
 	var p: Vector3

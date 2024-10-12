@@ -38,3 +38,7 @@ func _input(event):
 			transform.basis = Basis()
 			rotate_object_local(Vector3(0, 1, 0), camera_rotation.x)
 			rotate_object_local(Vector3(1, 0, 0), camera_rotation.y)
+
+
+func _on_timer_timeout():
+	pass # Replace with function body.
