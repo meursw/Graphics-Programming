@@ -39,6 +39,5 @@ fov = 60.0
 script = ExtResource("1_pqmig")
 
 [node name="Graph" parent="." instance=ExtResource("1_lllvd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-resolution = 60
+resolution = 80
 function_name = 4
