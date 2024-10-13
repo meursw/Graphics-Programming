@@ -39,9 +39,7 @@ fov = 60.0
 script = ExtResource("1_pqmig")
 
 [node name="Graph" parent="." instance=ExtResource("1_lllvd")]
-resolution = 50
+resolution = 55
 transition_mode = 1
-function_duration = 2.0
-transition_duration = 0.8
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]

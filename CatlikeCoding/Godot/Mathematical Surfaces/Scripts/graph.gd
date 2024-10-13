@@ -1,11 +1,10 @@
 extends Node3D
-
 class_name Graph
 
 enum TransitionMode {Cycle, Random}
 
 @export var point_scn: PackedScene
-@export_range(10, 100, 1) var resolution := 10
+@export_range(10, 150, 1) var resolution := 10
 
 @export var transition_mode: TransitionMode
 @export var function_name: FunctionLibrary.FunctionName

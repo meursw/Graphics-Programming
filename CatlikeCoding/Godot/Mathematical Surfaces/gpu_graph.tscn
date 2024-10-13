@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b44rm1eqw7w6x"]
+
+[ext_resource type="Script" path="res://gpu_graph.gd" id="1_ybp7f"]
+
+[node name="GPUGraph" type="Node3D"]
+script = ExtResource("1_ybp7f")
