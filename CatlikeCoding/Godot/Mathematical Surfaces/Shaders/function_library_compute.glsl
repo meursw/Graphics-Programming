@@ -9,19 +9,18 @@ layout(set = 0, binding = 0, std430) restrict buffer MyDataBuffer {
     vec3 _Positions[];
 };
 
-layout(set = 0, binding = 1, std430) restrict buffer Uniforms {
-    float _Step, _Time;
-    int _Resolution;
-} 
-Uniforms;
+layout(set = 0, binding = 1, std430) restrict buffer MyUniformBuffer {
+    float Step, Time, Resolution;
+}
+UB;
 
 vec2 GetUV(uvec3 id) {
-    return (vec2(id.xy) + 0.5) * _Step - 1.0;
+    return (vec2(id.xy) + 0.5) * UN.Step - 1.0;
 }
 
 void SetPosition(uvec3 id, vec3 position) {
-    if (id.x < _Resolution && id.y < _Resolution) {
-        _Positions[id.x + id.y * _Resolution] = position;
+    if (id.x < _Resolution && id.y < UB.Resolution) {
+        _Positions[id.x + id.y * UB.Resolution] = position;
     }
 }
 
@@ -35,5 +34,5 @@ vec3 Wave (float u, float v, float t) {
 
 void main() {
     vec2 uv = GetUV(gl_GlobalInvocationID);
-    SetPosition(gl_GlobalInvocationID, Wave(uv.x, uv.y, _Time));
+    SetPosition(gl_GlobalInvocationID, Wave(uv.x, uv.y, UB.Time));
 }

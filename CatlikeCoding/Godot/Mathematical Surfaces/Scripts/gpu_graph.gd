@@ -4,11 +4,12 @@ class_name GPUGraph
 enum TransitionMode {Cycle, Random}
 
 @export_group("GPU Graph")
-@export_range(10, 200, 1) var resolution := 10
+@export_range(10, 200, 1) var resolution: float = 10
 @export var function_name: FunctionLibrary.FunctionName
 @export var transition_mode: TransitionMode
 @export var function_duration := 1.0
 @export var transition_duration := 1.0
+@export var compute_shader: Node
 
 var duration: float
 var transitioning: bool
@@ -29,6 +30,16 @@ func _process(delta):
 		transitioning = true;
 		transition_function = function_name;
 		pick_next_function()
+	
+	update_function_on_gpu()
+
+func update_function_on_gpu() -> void:
+	step = 2.0 / resolution
+	time = Time.get_ticks_msec() * 0.0008
+	compute_shader.update()
+	# TO-DO
+	# CONTINUE FROM TUTORIAL: PROCEDURAL DRAWING
+	
 
 func pick_next_function() -> void:
 	function_name = FunctionLibrary.get_next_function(function_name) \

@@ -11,12 +11,17 @@ var uniforms_buffer: RID
 
 var ubo_data: PackedFloat32Array
 
+var uniform_set: RID
+var shader: RID
+
+var pipeline: RID
+
 func _ready() -> void:
 	rd = RenderingServer.create_local_rendering_device()
 
 	var shader_file := load("res://Shaders/function_library_compute.glsl")
 	var shader_spirv: RDShaderSPIRV = shader_file.get_spirv()
-	var shader := rd.shader_create_from_spirv(shader_spirv)
+	shader = rd.shader_create_from_spirv(shader_spirv)
 	
 	# Allocate memory for the positions compute buffer
 	# Create uniform storage buffer 
@@ -40,9 +45,9 @@ func _ready() -> void:
 	u_uniforms.add_id(uniforms_buffer)
 	
 	# Create uniform set for the shader
-	var uniform_set := rd.uniform_set_create([u_positions, u_uniforms], shader, 0)
+	uniform_set = rd.uniform_set_create([u_positions, u_uniforms], shader, 0)
 	
-	var pipeline := rd.compute_pipeline_create(shader)
+	pipeline = rd.compute_pipeline_create(shader)
 	var compute_list := rd.compute_list_begin()
 	rd.compute_list_bind_compute_pipeline(compute_list, pipeline)
 	rd.compute_list_bind_uniform_set(compute_list, uniform_set, 0)
@@ -52,9 +57,21 @@ func _ready() -> void:
 	rd.compute_list_dispatch(compute_list, groups, groups, 1)
 	rd.compute_list_end()
 	
-	rd.sumbit()
+	rd.submit()
 
-func _process(delta):
+func update():
 	ubo_data = [step, time, resolution]
 	var ubo_bytes = ubo_data.to_byte_array()
-	rd.buffer_update(uniforms_buffer, 0, 4 * 4 * 4, ubo_bytes)
+	rd.buffer_update(uniforms_buffer, 0, ubo_bytes.size(), ubo_bytes)
+	
+	var compute_list := rd.compute_list_begin()
+	rd.compute_list_bind_compute_pipeline(compute_list, pipeline)
+	rd.compute_list_bind_uniform_set(compute_list, uniform_set, 0)
+	
+	# Dispatch workgroups
+	var groups: int = ceili(resolution / 8.0)
+	rd.compute_list_dispatch(compute_list, groups, groups, 1)
+	rd.compute_list_end()
+	
+	rd.submit()
+	

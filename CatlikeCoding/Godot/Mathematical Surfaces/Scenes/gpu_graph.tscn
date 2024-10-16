@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/gpu_graph.gd" id="1_mss0f"]
 [ext_resource type="Script" path="res://Scripts/compute_shader.gd" id="2_mg2xm"]
 
-[node name="GPUGraph" type="Node3D"]
+[node name="GPUGraph" type="Node3D" node_paths=PackedStringArray("compute_shader")]
 script = ExtResource("1_mss0f")
+compute_shader = NodePath("ComputeShader")
 
 [node name="ComputeShader" type="Node" parent="."]
 script = ExtResource("2_mg2xm")
