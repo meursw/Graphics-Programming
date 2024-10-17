@@ -40,7 +40,8 @@ func update(s: float, t: float, res: float, tp: float) -> void:
 	var ubo_data:PackedFloat32Array = [step, time, resolution, transition_progress]
 	var ubo_bytes:PackedByteArray = ubo_data.to_byte_array()
 	rd.buffer_update(uniforms_buffer, 0, ubo_bytes.size(), ubo_bytes)
-
+	
+	# This function crashes the scene if it's left un commented 
 	#dispatch()
 
 func dispatch() -> void:
