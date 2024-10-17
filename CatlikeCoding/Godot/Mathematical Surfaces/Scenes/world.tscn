@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://5kc0mebj3x2g"]
 
-[ext_resource type="PackedScene" uid="uid://beborlnluhew3" path="res://Scenes/graph.tscn" id="1_lllvd"]
 [ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="1_pqmig"]
+[ext_resource type="PackedScene" uid="uid://b44rm1eqw7w6x" path="res://Scenes/gpu_graph.tscn" id="2_baae3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m0b7s"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -38,8 +38,7 @@ current = true
 fov = 60.0
 script = ExtResource("1_pqmig")
 
-[node name="Graph" parent="." instance=ExtResource("1_lllvd")]
-resolution = 55
-transition_mode = 1
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+
+[node name="GPUGraph" parent="." instance=ExtResource("2_baae3")]
+resolution = 20.0

@@ -6,21 +6,22 @@
 layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
 
 layout(set = 0, binding = 0, std430) restrict buffer MyDataBuffer {
-    vec3 _Positions[];
-};
-
-layout(set = 0, binding = 1, std430) restrict buffer MyUniformBuffer {
-    float Step, Time, Resolution;
+    vec3 Positions[];
 }
-UB;
+CB; // compute buffer
+
+layout(set = 1, binding = 0) uniform MyUniformBuffer {
+    float Step, Time, Resolution, TransitionProgress;
+}
+UB; // uniform buffer
 
 vec2 GetUV(uvec3 id) {
-    return (vec2(id.xy) + 0.5) * UN.Step - 1.0;
+    return (vec2(id.xy) + 0.5) * UB.Step - 1.0;
 }
 
 void SetPosition(uvec3 id, vec3 position) {
-    if (id.x < _Resolution && id.y < UB.Resolution) {
-        _Positions[id.x + id.y * UB.Resolution] = position;
+    if (id.x < uint(UB.Resolution) && id.y < uint(UB.Resolution)) {
+        CB.Positions[id.x + id.y * uint(UB.Resolution)] = position;
     }
 }
 
