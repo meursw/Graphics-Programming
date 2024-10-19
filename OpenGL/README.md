@@ -10,3 +10,6 @@
 
 - # 1.6 Hello Textures
 ![Hello Textures](https://raw.githubusercontent.com/meursw/Graphics-Programming/refs/heads/main/OpenGL/1.%20Getting%20Started/Results/hello_textures.gif)
+
+- # 1.7 Transformations
+![Scale and rotation](https://raw.githubusercontent.com/meursw/Graphics-Programming/refs/heads/main/OpenGL/1.%20Getting%20Started/Results/transformations.gif)
