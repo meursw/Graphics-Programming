@@ -41,4 +41,3 @@ script = ExtResource("1_pqmig")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 
 [node name="GPUGraph" parent="." instance=ExtResource("2_baae3")]
-resolution = 20.0

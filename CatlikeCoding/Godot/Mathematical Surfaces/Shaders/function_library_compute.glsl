@@ -10,7 +10,7 @@ layout(set = 0, binding = 0, std430) restrict buffer MyDataBuffer {
 }
 CB; // compute buffer
 
-layout(set = 1, binding = 0) uniform MyUniformBuffer {
+layout(set = 0, binding = 1) uniform MyUniformBuffer {
     float Step, Time, Resolution, TransitionProgress;
 }
 UB; // uniform buffer

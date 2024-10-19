@@ -4,7 +4,7 @@ class_name GPUGraph
 enum TransitionMode {Cycle, Random}
 
 @export_group("GPU Graph")
-@export_range(10, 200, 1) var resolution: float = 10
+@export_range(10, 1000, 1) var resolution: int = 10
 @export var function_name: FunctionLibrary.FunctionName
 @export var transition_mode: TransitionMode
 @export var function_duration := 1.0
