@@ -16,10 +16,8 @@ var ubo_uniform: RDUniform
 var uniform_set: RID
 var pipeline: RID
 
-var mutex: Mutex
-
 # Multimesh node to render using the GPU
-@export var multi_mesh: MultiMeshInstance3D
+@export var mesh_instance3D: MultiMeshInstance3D
 
 func _ready():
 	rd = RenderingServer.create_local_rendering_device()
@@ -45,34 +43,11 @@ func dispatch() -> void:
 	
 	update_multimesh()
 
+# WRONG. THIS SHOULD HAPPEN ON THE GPU
 func update_multimesh() -> void:
 	# Retrieve byte data from the positions buffer
-	var byte_data: PackedByteArray = rd.buffer_get_data(positions_buffer)
-	
-	# Calculate the number of instances based on resolution
-	multi_mesh.multimesh.instance_count = resolution * resolution  # Adjusted count
-	
-	# Calculate scale based on resolution
-	var scale = 2.0 / resolution
-	var scale_basis = Basis().scaled(Vector3(scale, scale, scale))
-
-	# Iterate through each instance and set its transform
-	for i in range(multi_mesh.multimesh.instance_count):
-		var index = i * 3 * 4  # Each Vector3 has 3 floats (x, y, z), each float is 4 bytes
-		
-		var x := byte_data.decode_float(index)
-		var y := byte_data.decode_float(index + 4)
-		var z := byte_data.decode_float(index + 8)
-		
-		var position := Vector3(x,y,z)
-		# Create a transform for this instance
-		var transform = Transform3D()
-		transform.origin = position
-		transform.basis = scale_basis  # Apply scale
-		
-		# Set the instance transform in the MultiMesh
-		multi_mesh.multimesh.set_instance_transform(i, transform)
-
+	#var byte_data: PackedByteArray = rd.buffer_get_data(positions_buffer)
+	mesh_instance3D.multimesh.instance_count = resolution * resolution  # Adjusted count
 
 func update_buffers_and_uniforms(s: float, t: float, res: float, tp: float) -> void:
 	#if res != resolution:

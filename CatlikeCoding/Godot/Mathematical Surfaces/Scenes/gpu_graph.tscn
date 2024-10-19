@@ -2,13 +2,15 @@
 
 [ext_resource type="Script" path="res://Scripts/gpu_graph.gd" id="1_mss0f"]
 [ext_resource type="Script" path="res://Scripts/compute_shader.gd" id="2_mg2xm"]
-[ext_resource type="Shader" path="res://Shaders/point_surface.gdshader" id="3_8j52y"]
+[ext_resource type="Shader" path="res://Scenes/gpu_graph.gdshader" id="3_nv0ep"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1qt8t"]
 render_priority = 0
-shader = ExtResource("3_8j52y")
+shader = ExtResource("3_nv0ep")
+shader_parameter/positions = null
 
 [sub_resource type="BoxMesh" id="BoxMesh_ockuj"]
+material = SubResource("ShaderMaterial_1qt8t")
 
 [sub_resource type="MultiMesh" id="MultiMesh_h7wnj"]
 transform_format = 1
@@ -21,10 +23,9 @@ script = ExtResource("1_mss0f")
 resolution = 1000
 compute_shader = NodePath("ComputeShader")
 
-[node name="ComputeShader" type="Node" parent="." node_paths=PackedStringArray("multi_mesh")]
+[node name="ComputeShader" type="Node" parent="." node_paths=PackedStringArray("mesh_instance3D")]
 script = ExtResource("2_mg2xm")
-multi_mesh = NodePath("MultiMeshInstance3D")
+mesh_instance3D = NodePath("MultiMeshInstance3D")
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="ComputeShader"]
-material_override = SubResource("ShaderMaterial_1qt8t")
 multimesh = SubResource("MultiMesh_h7wnj")
