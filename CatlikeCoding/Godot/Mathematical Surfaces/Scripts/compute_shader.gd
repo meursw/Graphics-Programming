@@ -37,17 +37,17 @@ func update(s: float, t: float, res: float, tp: float) -> void:
 
 func update_buffers_and_uniforms(s: float, t: float, res: float, tp: float) -> void:
 	if res != resolution:
-			rd.buffer_clear(positions_buffer, 0, resolution * resolution * 3 * 4)
-			rd.free_rid(positions_buffer)
-			resolution = res
-			
-			positions_buffer = rd.storage_buffer_create(resolution * resolution * 3 * 4)
-			positions_uniform = RDUniform.new()
-			positions_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_STORAGE_BUFFER
-			positions_uniform.binding = 0
-			positions_uniform.add_id(positions_buffer)
-			
-			setup_positions_texture(resolution, resolution)
+		rd.buffer_clear(positions_buffer, 0, resolution * resolution * 3 * 4)
+		rd.free_rid(positions_buffer)
+		resolution = res
+		
+		positions_buffer = rd.storage_buffer_create(resolution * resolution * 3 * 4)
+		positions_uniform = RDUniform.new()
+		positions_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_STORAGE_BUFFER
+		positions_uniform.binding = 0
+		positions_uniform.add_id(positions_buffer)
+		
+		setup_positions_texture(resolution, resolution)
 	
 	var ubo_data: PackedByteArray = PackedFloat32Array([s, t, resolution, tp]).to_byte_array()
 	rd.buffer_update(ubo_buffer, 0, ubo_data.size(), ubo_data)
@@ -93,7 +93,10 @@ func setup_positions_texture(width: int, height: int) -> void:
 	tex_format.width = width
 	tex_format.height = height
 	tex_format.format = RenderingDevice.DATA_FORMAT_R32G32B32A32_SFLOAT
-	tex_format.usage_bits = RenderingDevice.TEXTURE_USAGE_CAN_UPDATE_BIT | RenderingDevice.TEXTURE_USAGE_STORAGE_BIT | RenderingDevice.TEXTURE_USAGE_CAN_COPY_FROM_BIT | RenderingDevice.TEXTURE_USAGE_SAMPLING_BIT
+	tex_format.usage_bits = RenderingDevice.TEXTURE_USAGE_CAN_UPDATE_BIT \
+							 | RenderingDevice.TEXTURE_USAGE_STORAGE_BIT \
+					   | RenderingDevice.TEXTURE_USAGE_CAN_COPY_FROM_BIT \
+							| RenderingDevice.TEXTURE_USAGE_SAMPLING_BIT
 
 	# Create the texture
 	positions_texture = rd.texture_create(tex_format, RDTextureView.new())

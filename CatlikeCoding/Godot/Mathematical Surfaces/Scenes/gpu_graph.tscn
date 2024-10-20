@@ -36,6 +36,6 @@ multimesh = SubResource("MultiMesh_h7wnj")
 
 [node name="Positions" type="Sprite2D" parent="ComputeShader"]
 unique_name_in_owner = true
-position = Vector2(498.73, 500)
-scale = Vector2(0.3, 0.3)
+position = Vector2(500, 250)
+scale = Vector2(0.44, 0.44)
 texture = SubResource("Texture2DRD_dy8jf")
