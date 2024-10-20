@@ -17,7 +17,7 @@ var uniform_set: RID
 var uniform_set_textures: RID
 var pipeline: RID
 
-# Multimesh node to render using the GPU
+# MultiMeshInstance3D node to render using the GPU
 @export var mesh_instance3D: MultiMeshInstance3D
 @onready var positions: Sprite2D= %Positions
 
@@ -34,23 +34,6 @@ func _ready():
 func update(s: float, t: float, res: float, tp: float) -> void:
 	update_buffers_and_uniforms(s, t, res, tp)
 	dispatch()
-	
-func dispatch() -> void:
-	var compute_list := rd.compute_list_begin()
-	rd.compute_list_bind_compute_pipeline(compute_list, pipeline)
-	rd.compute_list_bind_uniform_set(compute_list, uniform_set, 0)
-	rd.compute_list_bind_uniform_set(compute_list, uniform_set_textures, 1)
-	var groups: int = ceil(resolution / 8.0)
-	rd.compute_list_dispatch(compute_list, groups, groups, 1)
-	
-	rd.compute_list_end()
-	rd.submit()
-	rd.sync()  # Ensure the GPU work is done before continuing
-
-func update_texture() -> void:
-	var texture = Texture2DRD.new()
-	texture.texture_rd_rid = positions_texture
-	positions.texture = texture 
 
 func update_buffers_and_uniforms(s: float, t: float, res: float, tp: float) -> void:
 	if res != resolution:
@@ -71,6 +54,18 @@ func update_buffers_and_uniforms(s: float, t: float, res: float, tp: float) -> v
 	
 	uniform_set = rd.uniform_set_create([positions_uniform, ubo_uniform], shader, 0)
 	
+func dispatch() -> void:
+	var compute_list := rd.compute_list_begin()
+	rd.compute_list_bind_compute_pipeline(compute_list, pipeline)
+	rd.compute_list_bind_uniform_set(compute_list, uniform_set, 0)
+	rd.compute_list_bind_uniform_set(compute_list, uniform_set_textures, 1)
+	var groups: int = ceil(resolution / 8.0)
+	rd.compute_list_dispatch(compute_list, groups, groups, 1)
+	
+	rd.compute_list_end()
+	rd.submit()
+	rd.sync()  # Ensure the GPU work is done before continuing
+
 func setup_buffers_and_uniforms() -> void:
 	resolution = get_parent().resolution
 	positions_buffer = rd.storage_buffer_create(resolution * resolution * 3 * 4)
