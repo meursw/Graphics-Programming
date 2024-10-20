@@ -92,7 +92,7 @@ func setup_positions_texture(width: int, height: int) -> void:
 	tex_format.texture_type = RenderingDevice.TEXTURE_TYPE_2D
 	tex_format.width = width
 	tex_format.height = height
-	tex_format.format = RenderingDevice.DATA_FORMAT_R32G32B32A32_SFLOAT  # Ensure this format is suitable for your needs
+	tex_format.format = RenderingDevice.DATA_FORMAT_R32G32B32A32_SFLOAT
 	tex_format.usage_bits = RenderingDevice.TEXTURE_USAGE_CAN_UPDATE_BIT | RenderingDevice.TEXTURE_USAGE_STORAGE_BIT | RenderingDevice.TEXTURE_USAGE_CAN_COPY_FROM_BIT | RenderingDevice.TEXTURE_USAGE_SAMPLING_BIT
 
 	# Create the texture
