@@ -15,6 +15,8 @@ layout(set = 0, binding = 1) uniform MyUniformBuffer {
 }
 UB; // uniform buffer
 
+layout(set = 1, binding = 0, rgba32f) uniform image2D positionsTexture;
+
 vec2 GetUV(uvec3 id) {
     return (vec2(id.xy) + 0.5) * UB.Step - 1.0;
 }
@@ -22,6 +24,7 @@ vec2 GetUV(uvec3 id) {
 void SetPosition(uvec3 id, vec3 position) {
     if (id.x < uint(UB.Resolution) && id.y < uint(UB.Resolution)) {
         CB.Positions[id.x + id.y * uint(UB.Resolution)] = position;
+        imageStore(positionsTexture, ivec2(id.xy), vec4(position, 1.0));
     }
 }
 

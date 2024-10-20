@@ -1,26 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://b44rm1eqw7w6x"]
+[gd_scene load_steps=9 format=3 uid="uid://b44rm1eqw7w6x"]
 
 [ext_resource type="Script" path="res://Scripts/gpu_graph.gd" id="1_mss0f"]
 [ext_resource type="Script" path="res://Scripts/compute_shader.gd" id="2_mg2xm"]
-[ext_resource type="Shader" path="res://Scenes/gpu_graph.gdshader" id="3_nv0ep"]
+[ext_resource type="Shader" path="res://Shaders/gpu_graph.gdshader" id="3_sjqb8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1qt8t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bl456"]
 render_priority = 0
-shader = ExtResource("3_nv0ep")
-shader_parameter/positions = null
+shader = ExtResource("3_sjqb8")
 
-[sub_resource type="BoxMesh" id="BoxMesh_ockuj"]
-material = SubResource("ShaderMaterial_1qt8t")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vru4k"]
+render_priority = 0
+shader = ExtResource("3_sjqb8")
+
+[sub_resource type="BoxMesh" id="BoxMesh_yrh3m"]
+material = SubResource("ShaderMaterial_vru4k")
 
 [sub_resource type="MultiMesh" id="MultiMesh_h7wnj"]
 transform_format = 1
-use_colors = true
-use_custom_data = true
-mesh = SubResource("BoxMesh_ockuj")
+mesh = SubResource("BoxMesh_yrh3m")
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_dy8jf"]
 
 [node name="GPUGraph" type="Node3D" node_paths=PackedStringArray("compute_shader")]
 script = ExtResource("1_mss0f")
-resolution = 1000
+resolution = 990
 compute_shader = NodePath("ComputeShader")
 
 [node name="ComputeShader" type="Node" parent="." node_paths=PackedStringArray("mesh_instance3D")]
@@ -28,4 +31,11 @@ script = ExtResource("2_mg2xm")
 mesh_instance3D = NodePath("MultiMeshInstance3D")
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="ComputeShader"]
+material_override = SubResource("ShaderMaterial_bl456")
 multimesh = SubResource("MultiMesh_h7wnj")
+
+[node name="Positions" type="Sprite2D" parent="ComputeShader"]
+unique_name_in_owner = true
+position = Vector2(498.73, 500)
+scale = Vector2(0.3, 0.3)
+texture = SubResource("Texture2DRD_dy8jf")
