@@ -13,3 +13,6 @@
 
 - # 1.7 Transformations
 ![Scale and rotation](https://raw.githubusercontent.com/meursw/Graphics-Programming/refs/heads/main/OpenGL/1.%20Getting%20Started/Results/transformations.gif)
+
+- # 1.8 Coordinates
+![10 cubes](https://raw.githubusercontent.com/meursw/Graphics-Programming/refs/heads/main/OpenGL/1.%20Getting%20Started/Results/gastercubes.gif)
