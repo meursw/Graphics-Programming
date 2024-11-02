@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://5kc0mebj3x2g"]
 
 [ext_resource type="Script" path="res://Scripts/camera_3d.gd" id="1_pqmig"]
-[ext_resource type="PackedScene" uid="uid://b44rm1eqw7w6x" path="res://Scenes/gpu_graph.tscn" id="2_baae3"]
+[ext_resource type="PackedScene" uid="uid://dnth48jgovllk" path="res://Scenes/fractal.tscn" id="2_1ceht"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m0b7s"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,6 +30,7 @@ environment = SubResource("Environment_j1x7o")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.789084, 0.473998, -0.390733, 0, 0.636078, 0.771624, 0.614285, -0.608877, 0.501919, 0, 3, 0)
+light_energy = 2.201
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -38,6 +39,4 @@ current = true
 fov = 60.0
 script = ExtResource("1_pqmig")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-
-[node name="GPUGraph" parent="." instance=ExtResource("2_baae3")]
+[node name="Fractal" parent="." instance=ExtResource("2_1ceht")]
