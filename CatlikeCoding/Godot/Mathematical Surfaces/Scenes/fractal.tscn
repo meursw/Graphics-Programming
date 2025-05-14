@@ -9,6 +9,5 @@ albedo_color = Color(0.57, 0.57, 0.0114, 1)
 material = SubResource("StandardMaterial3D_d6sam")
 
 [node name="Fractal" type="MeshInstance3D"]
-rotation_edit_mode = 1
 mesh = SubResource("SphereMesh_cit8i")
 script = ExtResource("1_q3c26")
