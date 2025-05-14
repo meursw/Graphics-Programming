@@ -16,3 +16,6 @@
 
 - # 1.8 Coordinates
 ![10 cubes](https://raw.githubusercontent.com/meursw/Graphics-Programming/refs/heads/main/OpenGL/1.%20Getting%20Started/Results/gastercubes.gif)
+
+- # 1.9 Camera
+![Camera](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/1.%20Getting%20Started/Results/camera.gif)
