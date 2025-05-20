@@ -7,3 +7,7 @@
 # Tutorial 5
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/linear.gif)
 |:--:|
+# Tutorial 6
+![Image](https://raw.githubusercontent.com/meursw/Graphics-Programming/refs/heads/main/DirectX%2011/Results/diffuse_lighting.gif)
+|:--:|
+*Diffuse lighting on a triangle.*
