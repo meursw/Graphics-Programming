@@ -7,7 +7,7 @@
 # Tutorial 5
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/linear.gif)
 |:--:|
-*Texture mapped to 2 triangles, camera movement, linear filtering*
+*Texture mapped to 2 triangles, camera movement, linear filtering.*
 # Tutorial 6
 ![Image](https://raw.githubusercontent.com/meursw/Graphics-Programming/refs/heads/main/DirectX%2011/Results/diffuse_lighting.gif)
 |:--:|
