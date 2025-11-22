@@ -52,7 +52,7 @@ public class Fractal : MonoBehaviour {
 
 	NativeArray<float3x4>[] matrices;
 
-    [SerializeField, Range(2,9)]
+    [SerializeField, Range(3,9)]
     int depth = 4;
 
     [SerializeField]
@@ -63,6 +63,8 @@ public class Fractal : MonoBehaviour {
     
     [SerializeField]
 	Gradient gradientA, gradientB;
+    [SerializeField]
+	Color leafColorA, leafColorB;
 
     static float3[] directions = {
 		up(), right(), left(), forward(), back()
@@ -163,13 +165,23 @@ public class Fractal : MonoBehaviour {
         jobHandle.Complete();
 
         var bounds = new Bounds(Vector3.zero, 3.0f * Vector3.one);
+        int leafIndex = matricesBuffers.Length - 1;
         for(int i = 0; i < matricesBuffers.Length; i++) {
             ComputeBuffer buffer = matricesBuffers[i];
             buffer.SetData(matrices[i]);
-            
-            float gradientInterpolator = i / (matricesBuffers.Length - 1f);
-			propertyBlock.SetColor(colorAId, gradientA.Evaluate(gradientInterpolator));
-			propertyBlock.SetColor(colorBId, gradientB.Evaluate(gradientInterpolator));
+
+            Color colorA, colorB;
+			if (i == leafIndex) {
+				colorA = leafColorA;
+				colorB = leafColorB;
+			}
+			else {
+				float gradientInterpolator = i / (matricesBuffers.Length - 2f);
+				colorA = gradientA.Evaluate(gradientInterpolator);
+				colorB = gradientB.Evaluate(gradientInterpolator);
+			}
+			propertyBlock.SetColor(colorAId, colorA);
+			propertyBlock.SetColor(colorBId, colorB);
         
             propertyBlock.SetBuffer(matricesId, buffer);
             propertyBlock.SetVector(sequenceNumbersId, sequenceNumbers[i]);
