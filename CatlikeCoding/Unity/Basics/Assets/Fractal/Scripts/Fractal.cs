@@ -56,7 +56,7 @@ public class Fractal : MonoBehaviour {
     int depth = 4;
 
     [SerializeField]
-    Mesh mesh;
+    Mesh mesh, leafMesh;
 
     [SerializeField]
     Material material;
@@ -185,7 +185,7 @@ public class Fractal : MonoBehaviour {
         
             propertyBlock.SetBuffer(matricesId, buffer);
             propertyBlock.SetVector(sequenceNumbersId, sequenceNumbers[i]);
-            Graphics.DrawMeshInstancedProcedural(mesh, 0, material, bounds, buffer.count, propertyBlock);
+            Graphics.DrawMeshInstancedProcedural(i == leafIndex ? leafMesh : mesh, 0, material, bounds, buffer.count, propertyBlock);
         }
         
     }
