@@ -409,7 +409,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   depth: 6
   mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  leafMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: 626c175fa02e75b48bc8dc5ff308505f, type: 2}
+  gradientA:
+    serializedVersion: 2
+    key0: {r: 0.5471698, g: 0.3775525, b: 0.19357423, a: 0.3647059}
+    key1: {r: 0.8867924, g: 0.78843516, b: 0.38065147, a: 0.6392157}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  gradientB:
+    serializedVersion: 2
+    key0: {r: 0.6698113, g: 0.35461205, b: 0.2748754, a: 0.32941177}
+    key1: {r: 0.8773585, g: 0.82410556, b: 0.31038627, a: 0.6392157}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 47224
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  leafColorA: {r: 0.72304314, g: 0.9433962, b: 0.43164828, a: 0.35686275}
+  leafColorB: {r: 0.468, g: 0.056627996, b: 0.40771866, a: 0.8509804}
+  maxSagAngleA: 15
+  maxSagAngleB: 25
+  spinSpeedA: 20
+  spinSpeedB: 25
+  reverseSpinChance: 0.25
 --- !u!4 &1013407389
 Transform:
   m_ObjectHideFlags: 0
