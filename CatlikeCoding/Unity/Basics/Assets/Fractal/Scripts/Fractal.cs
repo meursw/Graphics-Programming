@@ -28,12 +28,29 @@ public class Fractal : MonoBehaviour {
 			FractalPart parent = parents[i / 5];
 			FractalPart part = parts[i];
 			part.spinAngle += spinAngleDelta;
-			part.worldRotation = mul(parent.worldRotation,
+
+            float3 upAxis = mul(mul(parent.worldRotation, part.rotation), up());
+            float3 sagAxis = cross(up(), upAxis);
+
+            float sagMagnitude = length(sagAxis);
+			quaternion baseRotation;
+
+			if (sagMagnitude > 0f) {
+				sagAxis /= sagMagnitude;
+				quaternion sagRotation =
+					quaternion.AxisAngle(sagAxis, part.maxSagAngle * sagMagnitude);
+				baseRotation = mul(sagRotation, parent.worldRotation);
+			}
+			else {
+				baseRotation = parent.worldRotation;
+			}
+		
+			part.worldRotation = mul(baseRotation,
 				mul(part.rotation, quaternion.RotateY(part.spinAngle))
 			);
 			part.worldPosition =
 				parent.worldPosition +
-				mul(parent.worldRotation, 1.5f * scale * part.direction);
+				mul(part.worldRotation, float3(0f, 1.5f * scale, 0f));
 			parts[i] = part;
 
 			float3x3 r = float3x3(part.worldRotation) * scale;
@@ -42,9 +59,9 @@ public class Fractal : MonoBehaviour {
 	}
 
     struct FractalPart {
-        public float3 direction, worldPosition;
+        public float3 worldPosition;
         public quaternion rotation, worldRotation;
-        public float spinAngle;
+        public float maxSagAngle, spinAngle;
     }
     static MaterialPropertyBlock propertyBlock;
 
@@ -65,10 +82,8 @@ public class Fractal : MonoBehaviour {
 	Gradient gradientA, gradientB;
     [SerializeField]
 	Color leafColorA, leafColorB;
-
-    static float3[] directions = {
-		up(), right(), left(), forward(), back()
-	};
+    [SerializeField, Range(0f, 90f)]
+	float maxSagAngleA = 15f, maxSagAngleB = 25f;
 
 	static Quaternion[] rotations = {
 		quaternion.identity,
@@ -133,7 +148,7 @@ public class Fractal : MonoBehaviour {
 	}
 
     FractalPart CreatePart(int childIndex) => new FractalPart {
-            direction = directions[childIndex],
+            maxSagAngle = radians(Random.Range(maxSagAngleA, maxSagAngleB)),
 			rotation = rotations[childIndex]
         };
 
