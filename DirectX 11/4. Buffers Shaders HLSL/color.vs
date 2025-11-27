@@ -1,53 +1,36 @@
-////////////////////////////////////////////////////////////////////////////////
-// Filename: color.vs
-////////////////////////////////////////////////////////////////////////////////
 
-
-/////////////
-// GLOBALS //
-/////////////
-cbuffer MatrixBuffer
-{
+cbuffer MatrixBuffer {
 	matrix worldMatrix;
 	matrix viewMatrix;
 	matrix projectionMatrix;
 };
 
-
-//////////////
-// TYPEDEFS //
-//////////////
-struct VertexInputType
-{
-    float4 position : POSITION;
-    float4 color : COLOR;
+// We make our own type definitions
+struct VertexInputType {
+	float4 position: POSITION;
+	float4 color: COLOR;
 };
 
-struct PixelInputType
-{
-    float4 position : SV_POSITION;
-    float4 color : COLOR;
+struct PixelInputType {
+	float4 position: SV_POSITION;
+	float4 color: COLOR;
 };
 
-
-////////////////////////////////////////////////////////////////////////////////
-// Vertex Shader
-////////////////////////////////////////////////////////////////////////////////
-PixelInputType ColorVertexShader(VertexInputType input)
-{
-    PixelInputType output;
-    
-
+// The vertex shader is called by the GPU when its processing data from the vertex buffers.
+// Returns a pixel input type because it sends the output to the pixel shader.
+PixelInputType ColorVertexShader(VertexInputType input) {
+	PixelInputType output;
+	
 	// Change the position vector to be 4 units for proper matrix calculations.
-    input.position.w = 1.0f;
-
-	// Calculate the position of the vertex against the world, view, and projection matrices.
-    output.position = mul(input.position, worldMatrix);
-    output.position = mul(output.position, viewMatrix);
-    output.position = mul(output.position, projectionMatrix);
-    
-	// Store the input color for the pixel shader to use.
-    output.color = input.color;
-    
-    return output;
+	// Since we only read in a XYZ vector for position.
+	input.position.w = 1.0f;
+	
+	output.position = mul(input.position, worldMatrix);
+	output.position = mul(output.position, viewMatrix);
+	output.position = mul(output.position, projectionMatrix);
+	
+	output.color = input.color;
+	
+	return output;
+	
 }

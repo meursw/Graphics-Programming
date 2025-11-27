@@ -1,5 +1,4 @@
 #pragma once
-
 #include <directxmath.h>
 using namespace DirectX;
 
@@ -24,4 +23,3 @@ private:
 	float m_rotationX, m_rotationY, m_rotationZ;
 	XMMATRIX m_viewMatrix;
 };
-
