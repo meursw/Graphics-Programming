@@ -17,7 +17,7 @@ public class Grid : MonoBehaviour {
         WaitForSeconds wait = new WaitForSeconds(0.05f);
 
         GetComponent<MeshFilter>().mesh = mesh = new Mesh();
-        mesh.name = "Procedurlar Grid";
+        mesh.name = "Procedural Grid";
 
         vertices = new Vector3[(xSize+1)*(ySize+1)];
         Vector2[] uv = new Vector2[vertices.Length];
