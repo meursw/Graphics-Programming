@@ -2,14 +2,12 @@
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
-#include <DirectXMath.h>
+#include <directxmath.h>
 #include <fstream>
-
 using namespace DirectX;
 using namespace std;
 
-class ColorShaderClass
-{
+class ColorShaderClass {
 private:
 	struct MatrixBufferType
 	{
@@ -25,6 +23,7 @@ public:
 
 	bool Initialize(ID3D11Device*, HWND);
 	void Shutdown();
+	// The render function sets the shader parameters and then draws the prepared model vertices using the shader.
 	bool Render(ID3D11DeviceContext*, int, XMMATRIX, XMMATRIX, XMMATRIX);
 
 private:
@@ -38,6 +37,8 @@ private:
 private:
 	ID3D11VertexShader* m_vertexShader;
 	ID3D11PixelShader* m_pixelShader;
+	// An input-layout interface holds a definition of how to feed vertex data 
+	// that is laid out in memory into the input-assembler stage of the graphics pipeline.
 	ID3D11InputLayout* m_layout;
 	ID3D11Buffer* m_matrixBuffer;
 };
