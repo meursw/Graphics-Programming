@@ -1,25 +1,11 @@
-////////////////////////////////////////////////////////////////////////////////
-// Filename: textureclass.h
-////////////////////////////////////////////////////////////////////////////////
-#ifndef _TEXTURECLASS_H_
-#define _TEXTURECLASS_H_
+#pragma once
 
-
-//////////////
-// INCLUDES //
-//////////////
 #include <d3d11.h>
 #include <stdio.h>
 
-
-////////////////////////////////////////////////////////////////////////////////
-// Class name: TextureClass
-////////////////////////////////////////////////////////////////////////////////
-class TextureClass
-{
+class TextureClass {
 private:
-	struct TargaHeader
-	{
+	struct TargaHeader {
 		unsigned char data1[12];
 		unsigned short width;
 		unsigned short height;
@@ -38,12 +24,10 @@ public:
 	ID3D11ShaderResourceView* GetTexture();
 
 	int GetWidth();
-    int GetHeight();
+	int GetHeight();
 
 private:
-	bool LoadTargaBit(char*);
-	//bool LoadTarga32Bit(unsigned char* targaImage, FILE* filePtr);
-	//bool LoadTarga24Bit(unsigned char* targaImage, FILE* filePtr);
+	bool LoadTarga32Bit(char*);
 
 private:
 	unsigned char* m_targaData;
@@ -52,4 +36,3 @@ private:
 	int m_width, m_height;
 };
 
-#endif

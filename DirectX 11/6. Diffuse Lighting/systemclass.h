@@ -1,34 +1,13 @@
-////////////////////////////////////////////////////////////////////////////////
-// Filename: systemclass.h
-////////////////////////////////////////////////////////////////////////////////
 #ifndef _SYSTEMCLASS_H_
 #define _SYSTEMCLASS_H_
 
-
-///////////////////////////////
-// PRE-PROCESSING DIRECTIVES //
-///////////////////////////////
 #define WIN32_LEAN_AND_MEAN
-
-
-//////////////
-// INCLUDES //
-//////////////
 #include <windows.h>
 
-
-///////////////////////
-// MY CLASS INCLUDES //
-///////////////////////
 #include "inputclass.h"
 #include "applicationclass.h"
 
-
-////////////////////////////////////////////////////////////////////////////////
-// Class name: SystemClass
-////////////////////////////////////////////////////////////////////////////////
-class SystemClass
-{
+class SystemClass {
 public:
 	SystemClass();
 	SystemClass(const SystemClass&);
@@ -42,29 +21,25 @@ public:
 
 private:
 	bool Frame();
-	void InitializeWindows(int&, int&);
+	void InitalizeWindows(int&, int&);
 	void ShutdownWindows();
 
 private:
+	// An LPCWSTR is a 32-bit pointer to a constant string of 16-bit Unicode characters, which MAY be null-terminated.
 	LPCWSTR m_applicationName;
+	// A handle to identify your application for others WINAPI calls
 	HINSTANCE m_hinstance;
+	// Handle to a window
 	HWND m_hwnd;
 
 	InputClass* m_Input;
 	ApplicationClass* m_Application;
+
 };
 
-
-/////////////////////////
-// FUNCTION PROTOTYPES //
-/////////////////////////
+// A callback function, that processes messages sent to a window.
 static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
-
-/////////////
-// GLOBALS //
-/////////////
 static SystemClass* ApplicationHandle = 0;
-
 
 #endif

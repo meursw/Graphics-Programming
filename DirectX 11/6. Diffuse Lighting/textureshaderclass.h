@@ -1,13 +1,5 @@
-////////////////////////////////////////////////////////////////////////////////
-// Filename: textureshaderclass.h
-////////////////////////////////////////////////////////////////////////////////
-#ifndef _TEXTURESHADERCLASS_H_
-#define _TEXTURESHADERCLASS_H_
+#pragma once
 
-
-//////////////
-// INCLUDES //
-//////////////
 #include <d3d11.h>
 #include <d3dcompiler.h>
 #include <directxmath.h>
@@ -15,10 +7,6 @@
 using namespace DirectX;
 using namespace std;
 
-
-////////////////////////////////////////////////////////////////////////////////
-// Class name: TextureShaderClass
-////////////////////////////////////////////////////////////////////////////////
 class TextureShaderClass
 {
 private:
@@ -51,7 +39,6 @@ private:
 	ID3D11PixelShader* m_pixelShader;
 	ID3D11InputLayout* m_layout;
 	ID3D11Buffer* m_matrixBuffer;
+
 	ID3D11SamplerState* m_sampleState;
 };
-
-#endif

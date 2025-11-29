@@ -1,17 +1,7 @@
-#ifndef _LIGHTCLASS_H_
-#define _LIGHTCLASS_H_
-
-
-//////////////
-// INCLUDES //
-//////////////
+#pragma once
 #include <directxmath.h>
 using namespace DirectX;
 
-
-////////////////////////////////////////////////////////////////////////////////
-// Class name: LightClass
-////////////////////////////////////////////////////////////////////////////////
 class LightClass
 {
 public:
@@ -29,5 +19,3 @@ private:
     XMFLOAT4 m_diffuseColor;
     XMFLOAT3 m_direction;
 };
-
-#endif

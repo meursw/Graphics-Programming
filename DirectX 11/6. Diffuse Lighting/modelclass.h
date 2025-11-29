@@ -1,6 +1,4 @@
-#ifndef _MODELCLASS_H_
-#define _MODELCLASS_H_
-
+#pragma once
 
 #include <d3d11.h>
 #include <directxmath.h>
@@ -8,8 +6,7 @@ using namespace DirectX;
 
 #include "textureclass.h"
 
-class ModelClass
-{
+class ModelClass {
 private:
 	struct VertexType
 	{
@@ -28,6 +25,7 @@ public:
 	void Render(ID3D11DeviceContext*);
 
 	int GetIndexCount();
+
 	ID3D11ShaderResourceView* GetTexture();
 
 private:
@@ -39,9 +37,11 @@ private:
 	void ReleaseTexture();
 
 private:
-	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;
+	ID3D11Buffer* m_vertexBuffer, * m_indexBuffer;
 	int m_vertexCount, m_indexCount;
+
 	TextureClass* m_Texture;
+
 };
 
-#endif
+
