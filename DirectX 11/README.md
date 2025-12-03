@@ -12,3 +12,4 @@
 ![Image](https://raw.githubusercontent.com/meursw/Graphics-Programming/refs/heads/main/DirectX%2011/Results/diffuse_lighting.gif)
 |:--:|
 *Diffuse lighting on a triangle.*
+
