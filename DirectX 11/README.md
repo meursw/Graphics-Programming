@@ -16,7 +16,7 @@
 # Tutorial 7
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/drybonestex.gif)
 |:--:|
-*3D model rendering. Wrote custom .obj file parser to load a 3D model I made.* 
+*3D model rendering. Wrote .obj file parser to load a 3D model I made in Blender 4.0.* 
 # Tutorial 8
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/2drybones.gif)
 |:--:|
