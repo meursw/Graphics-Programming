@@ -12,4 +12,8 @@
 ![Image](https://raw.githubusercontent.com/meursw/Graphics-Programming/refs/heads/main/DirectX%2011/Results/diffuse_lighting.gif)
 |:--:|
 *Diffuse lighting on a triangle.*
+# Tutoral 7
+![Image]
+|:--:|
+*3D model rendering. Used custom .obj file parser to load a 3D model I had made.* 
 
