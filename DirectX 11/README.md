@@ -20,8 +20,8 @@
 # Tutorial 8
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/2drybones.gif)
 |:--:|
-*2 of the same model with different transforms.*
-*The left model had its translation applied first, so now its rotation around the origin*
+*Two of the same model with different transforms.*
+*The left model had its translation applied first, so now its rotation around the origin.*
 
 
 
