@@ -13,7 +13,7 @@
 |:--:|
 *Diffuse lighting on a triangle.*
 # Tutoral 7
-![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/drybones.gif)
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/drybonestex.gif)
 |:--:|
 *3D model rendering. Used custom .obj file parser to load a 3D model I had made.* 
 
