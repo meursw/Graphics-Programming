@@ -17,7 +17,11 @@
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/drybonestex.gif)
 |:--:|
 *3D model rendering. Used custom .obj file parser to load a 3D model I had made.* 
-
+# Tutorial 8
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/2drybones.gif)
+|:--:|
+*2 of the same model with different transforms.*
+*The left model had its translation applied first, so now its rotation around the origin*
 
 
 
