@@ -12,7 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _FACES_X
+  - _FACES_Y
   m_InvalidKeywords: []
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
@@ -46,7 +46,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: cfad87c02dc8440ffa52af1560582614, type: 3}
-        m_Scale: {x: 2, y: 1}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -67,8 +67,8 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EmissionScaleUI: 0
-    - _Faces: 0
-    - _Glossiness: 0.5
+    - _Faces: 1
+    - _Glossiness: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
