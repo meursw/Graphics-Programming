@@ -23,6 +23,7 @@
 *Two of the same model with different transforms.*
 *The left model had its translation applied first, so now its rotating around the origin.*
 # Tutorial 9
-![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/ambient%26diffuse.png)
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/ambient%2Bdiffuse.png)
 |:--:|
 *Ambient and Diffuse Lighting. Light positioned at (-1,0,0).*
+
