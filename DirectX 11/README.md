@@ -26,4 +26,8 @@
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/ambient%2Bdiffuse.png)
 |:--:|
 *Ambient and Diffuse Lighting. Light positioned at (-1,0,0).*
-
+# Tutorial 10
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/Specular%20Lighting.png)
+|:--:|
+*Specular Lighting* 
+*Diffuse Color is red and Specular Color is green. Specular power set to 8."
