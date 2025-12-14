@@ -30,4 +30,4 @@
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/Specular%20Lighting.png)
 |:--:|
 *Specular Lighting* 
-*Diffuse Color is red and Specular Color is green. Specular power set to 8."
+*Diffuse Color is red and Specular Color is green. Specular power set to 8.*
