@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -218,14 +218,14 @@ MonoBehaviour:
     y: 1089
     width: 1934
     height: 218
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 15}
+  m_MinSize: {x: 232, y: 271}
+  m_MaxSize: {x: 10002, y: 10021}
+  m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
   - {fileID: 15}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -608,9 +608,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: 0}
+    m_Target: {x: -0.035520148, y: -0.036903277, z: -0.116791666}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: -0.035520148, y: -0.036903277, z: -0.116791666}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -656,20 +656,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.23193358, y: -0.5738084, z: 0.17373936, w: 0.7660422}
+    m_Target: {x: -0.45542923, y: 0.040626757, z: -0.020657899, w: -0.8890655}
     speed: 2
-    m_Value: {x: 0.23281373, y: -0.5746791, z: 0.17494452, w: 0.7648111}
+    m_Value: {x: -0.45541355, y: 0.041961767, z: -0.021341762, w: -0.88903445}
   m_Size:
-    m_Target: 1.6038315
+    m_Target: 0.47636575
     speed: 2
-    m_Value: 1.534767
+    m_Value: 0.47636575
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 0.1294
-    m_SpeedNormalized: 0.06
+    m_Speed: 0.069699995
+    m_SpeedNormalized: 0.03
     m_SpeedMin: 0.01
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -680,7 +680,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.012347478, y: 0.6791647, z: -0.011403636, w: -0.73383117}
+  m_LastSceneViewRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -724,9 +724,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: c2acffff
       m_LastClickedID: 0
-      m_ExpandedIDs: 2acfffff72cfffffbacfffff2efbffff
+      m_ExpandedIDs: 2efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -893,7 +893,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Shader Fundamentals/Shaders
+    - Assets/Shader Fundamentals/Textures
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -901,30 +901,30 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Shader Fundamentals/Shaders
+  - Assets/Shader Fundamentals/Textures
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Github\Graphics-Programming\CatlikeCoding\Unity\Rendering
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 67}
-    m_SelectedIDs: ec5b0000
-    m_LastClickedID: 23532
-    m_ExpandedIDs: 00000000d65a0000d25b0000e45b000000ca9a3b
+    scrollPos: {x: 0, y: 51}
+    m_SelectedIDs: ec5a0000
+    m_LastClickedID: 23276
+    m_ExpandedIDs: 00000000ca5a0000cc5a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Shaders
+      m_OriginalName: Shaders
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 23260
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
@@ -938,7 +938,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: a0c2ffff
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d65a0000
+    m_ExpandedIDs: 00000000ca5a0000cc5a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -965,7 +965,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000ba2d00009ca30000e6a50000f001000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
