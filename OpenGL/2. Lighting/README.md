@@ -7,6 +7,3 @@
 Phong Lighting
 *We can observe ambient and diffuse lighting on the sides of the cube while the light is rotating.*
 *We can also observe specular lighting on the top face of the cube.*
-
-- # 2.3 Materials
-![Phong Lighting](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/2.%20Lighting/Results/materials.gif)
