@@ -34,9 +34,11 @@
 
 # Tutorial 11
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/pointlight-attenuation.gif)
+|:--:|
+Four points lights with oscillating attenuation
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/spotlight-attenuation.gif)
 |:--:|
-1. Four points lights with oscillating attenuation
-2. Four spot lights with oscillating attenuation
+Four spot lights with oscillating attenuation
+
 
 
