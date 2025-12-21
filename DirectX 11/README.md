@@ -31,3 +31,12 @@
 |:--:|
 *Specular Lighting* 
 *Diffuse Color is red and Specular Color is green. Specular power set to 8.*
+
+# Tutorial 11
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/pointlight-attenuation.gif)
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/spotlight-attenuation.gif)
+|:--:|
+1. Four points lights with oscillating attenuation
+2. Four spot lights with oscillating attenuation
+
+
