@@ -37,8 +37,8 @@
 |:--:|
 Four points lights with oscillating attenuation
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/spotlight-attenuation.gif)
-|:--:|
 Four spot lights with oscillating attenuation
+
 
 
 
