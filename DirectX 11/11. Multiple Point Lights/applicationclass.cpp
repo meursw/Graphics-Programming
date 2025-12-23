@@ -9,11 +9,12 @@ ApplicationClass::ApplicationClass() {
 	m_TextureShader = 0;
 	m_LightShader = 0;
 	m_Lights = 0;
+	m_Timer = 0;
 }
 ApplicationClass::ApplicationClass(const ApplicationClass& o) {}
 ApplicationClass::~ApplicationClass() {}
 
-bool ApplicationClass::Initialize(int screenWidth, int screenHeight, HWND hwnd) {
+bool ApplicationClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, InputClass* input) {
 	char modelFilename[128];
 	char textureFilename[128];
 
@@ -25,12 +26,14 @@ bool ApplicationClass::Initialize(int screenWidth, int screenHeight, HWND hwnd) 
 		return false;
 	}
 
+	m_Input = input;
+
 	// Create camera object
 	m_Camera = new CameraClass;
-	m_Camera->SetPosition(0.0f, 8.0f, -10.0f);
-	m_Camera->SetRotation(90.0, 0.0, 0.0);
-	m_Camera->Render();
-
+	m_Camera->SetPosition(0.0f, 2.0f, -15.0f);
+	m_Camera->SetRotation(0.0, 0.0, 0.0);
+	m_Camera->SetCameraSpeed(10.0f);
+	m_Camera->Render(NONE, 0.0f);
 
 	// Create model class
 	m_Model = new ModelClass;
@@ -61,20 +64,22 @@ bool ApplicationClass::Initialize(int screenWidth, int screenHeight, HWND hwnd) 
 
 	// Manually set the color and position of each light.
 	m_Lights[0].SetDiffuseColor(1.0f, 0.0f, 0.0f, 1.0f);  // Red
-	m_Lights[0].SetPosition(-3.0f, 1.0f, 3.0f);
+	m_Lights[0].SetPosition(-3.0f, 4.3f, 3.0f);
 
 	m_Lights[1].SetDiffuseColor(0.0f, 1.0f, 0.0f, 1.0f);  // Green
-	m_Lights[1].SetPosition(3.0f, 1.0f, 3.0f);
+	m_Lights[1].SetPosition(3.0f, 1.9f, 3.0f);
 
 	m_Lights[2].SetDiffuseColor(0.0f, 0.0f, 1.0f, 1.0f);  // Blue
-	m_Lights[2].SetPosition(-3.0f, 1.0f, -3.0f);
+	m_Lights[2].SetPosition(-3.0f, 1.4f, -3.0f);
 
 	m_Lights[3].SetDiffuseColor(1.0f, 1.0f, 1.0f, 1.0f);  // White
-	m_Lights[3].SetPosition(3.0f, 1.0f, -3.0f);
+	m_Lights[3].SetPosition(3.0f, 1.1f, -3.0f);
 
 	m_Lights[4].SetDiffuseColor(1.0f, 1.0f, 0.0, 1.0f); // Yellow
-	m_Lights[4].SetPosition(0.0f, 1.5f, 0);
+	m_Lights[4].SetPosition(0.0f, 2.5f, 0);
 
+	m_Timer = new TimerClass;
+	if (!m_Timer->Initialize()) return false;
 
 	return true;
 }
@@ -137,19 +142,14 @@ void ApplicationClass::Shutdown() {
 
 
 bool ApplicationClass::Frame() {
-	static float rotation = 0.0f;
+	m_Timer->Frame();
 
-	rotation -= 0.174532925f * 1.8f;
-	if (rotation < 0.0f) {
-		rotation += 360.0f;
-	}
-
-	return Render(rotation);
+	return Render();
 }
 
 
 
-bool ApplicationClass::Render(float rotation)
+bool ApplicationClass::Render()
 {
 	XMMATRIX worldMatrix, viewMatrix, projectionMatrix;
 	XMFLOAT4 diffuseColor[5], lightPosition[5];
@@ -160,6 +160,20 @@ bool ApplicationClass::Render(float rotation)
 
 	// Clear the buffers to begin the scene.
 	m_Direct3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
+
+	// Move around the camera
+	if (m_Input->isKeyDown('W'))
+		m_Camera->Render(FORWARD, m_Timer->GetTime());
+	if (m_Input->isKeyDown('A'))
+		m_Camera->Render(LEFT, m_Timer->GetTime());
+	if (m_Input->isKeyDown('S'))
+		m_Camera->Render(BACKWARD, m_Timer->GetTime());
+	if (m_Input->isKeyDown('D'))
+		m_Camera->Render(RIGHT, m_Timer->GetTime());
+	if(m_Input->isKeyDown('E'))
+		m_Camera->Render(UP, m_Timer->GetTime());
+	if (m_Input->isKeyDown('Q'))
+		m_Camera->Render(DOWN, m_Timer->GetTime());
 
 	// Get the world, view, and projection matrices from the camera and d3d objects.
 	m_Direct3D->GetWorldMatrix(worldMatrix);
@@ -179,8 +193,8 @@ bool ApplicationClass::Render(float rotation)
 	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
 	m_Model->Render(m_Direct3D->GetDeviceContext());
 
-	attenuation.x = .5f;
-	attenuation.y = sinf(rotation*0.1)*0.3+0.3;
+	attenuation.x = .4f;
+	attenuation.y = 0.25;
 	attenuation.z = 0.025;
 
 	// Render the model using the light shader.

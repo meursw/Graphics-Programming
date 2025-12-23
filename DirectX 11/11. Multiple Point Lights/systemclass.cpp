@@ -21,7 +21,7 @@ bool SystemClass::Initialize() {
 	m_Application = new ApplicationClass;
 
 	// pass the window handle to the application (variable of system class)
-	return m_Application->Initialize(screenWidth, screenHeight, m_hwnd);
+	return m_Application->Initialize(screenWidth, screenHeight, m_hwnd, m_Input);
 
 }
 
@@ -38,7 +38,7 @@ void SystemClass::Shutdown() {
 	}
 
 	ShutdownWindows();
-	
+
 	return;
 }
 
@@ -81,10 +81,37 @@ void SystemClass::Run() {
 
 bool SystemClass::Frame() {
 	if (m_Input->isKeyDown(VK_ESCAPE)) {
-		return false; 
+		return false;
+	}
+	bool result;
+
+	// Get center of client rect
+	RECT windowRect;
+	GetClientRect(m_hwnd, &windowRect);
+	int centerX = (windowRect.left + windowRect.right) / 2;
+	int centerY = (windowRect.bottom + windowRect.top) / 2;
+
+	// Get cursor/mouse position and convert its coordinates to screen client coordinates
+	POINT cursorPos;
+	GetCursorPos(&cursorPos);
+	ScreenToClient(m_hwnd, &cursorPos);
+
+	float deltaX = static_cast<float>(cursorPos.x - centerX);
+	float deltaY = static_cast<float>(cursorPos.y - centerY);
+
+	if (fabs(deltaX) > 0.01f || fabs(deltaY) > 0.01f) {
+		m_Application->m_Camera->UpdateRotation(XMFLOAT2(deltaX, deltaY));
+
+		POINT screenCenter;
+		screenCenter.x = centerX;
+		screenCenter.y = centerY;
+		ClientToScreen(m_hwnd, &screenCenter);
+		SetCursorPos(screenCenter.x, screenCenter.y);
 	}
 
-	return m_Application->Frame();
+	result = m_Application->Frame();
+
+	return result;
 }
 
 // The MessageHandler function is where we direct the windows system messages into.
@@ -92,19 +119,19 @@ bool SystemClass::Frame() {
 LRESULT CALLBACK SystemClass::MessageHandler(HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam) {
 	switch (umsg) {
 
-		case WM_KEYDOWN: {
-			m_Input->KeyDown((unsigned int)wparam);
-			return 0;
-		}
+	case WM_KEYDOWN: {
+		m_Input->KeyDown((unsigned int)wparam);
+		return 0;
+	}
 
-		case WM_KEYUP: {
-			m_Input->KeyUp((unsigned int)wparam);
-			return 0;
-		}
+	case WM_KEYUP: {
+		m_Input->KeyUp((unsigned int)wparam);
+		return 0;
+	}
 
-		default: {
-			return DefWindowProc(hwnd, umsg, wparam, lparam);
-		}
+	default: {
+		return DefWindowProc(hwnd, umsg, wparam, lparam);
+	}
 
 	}
 }
@@ -131,7 +158,7 @@ void SystemClass::InitalizeWindows(int& screenWidth, int& screenHeight) {
 	wc.hInstance = m_hinstance;
 	wc.hIcon = LoadIcon(NULL, IDI_WINLOGO);
 	wc.hIconSm = wc.hIcon;
-	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wc.hCursor = LoadCursor(NULL, IDC_CROSS);
 	wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 	wc.lpszMenuName = NULL;
 	wc.lpszClassName = m_applicationName;
@@ -211,23 +238,23 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT umessage, WPARAM wparam, LPARAM lparam)
 	switch (umessage)
 	{
 		// Check if the window is being destroyed.
-		case WM_DESTROY:
-		{
-			PostQuitMessage(0);
-			return 0;
-		}
+	case WM_DESTROY:
+	{
+		PostQuitMessage(0);
+		return 0;
+	}
 
-		// Check if the window is being closed.
-		case WM_CLOSE:
-		{
-			PostQuitMessage(0);
-			return 0;
-		}
+	// Check if the window is being closed.
+	case WM_CLOSE:
+	{
+		PostQuitMessage(0);
+		return 0;
+	}
 
-		// All other messages pass to the message handler in the system class.
-		default:
-		{
-			return ApplicationHandle->MessageHandler(hwnd, umessage, wparam, lparam);
-		}
+	// All other messages pass to the message handler in the system class.
+	default:
+	{
+		return ApplicationHandle->MessageHandler(hwnd, umessage, wparam, lparam);
+	}
 	}
 }

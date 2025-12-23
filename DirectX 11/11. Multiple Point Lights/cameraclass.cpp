@@ -38,15 +38,38 @@ void CameraClass::SetRotation(float x, float y, float z)
 	return;
 }
 
+void CameraClass::SetCameraSpeed(float speed)
+{
+	m_cameraSpeed = speed;
+}
+
 XMFLOAT3 CameraClass::GetPosition()
 {
 	return XMFLOAT3(m_positionX, m_positionY, m_positionZ);
 }
 
-
 XMFLOAT3 CameraClass::GetRotation()
 {
 	return XMFLOAT3(m_rotationX, m_rotationY, m_rotationZ);
+}
+
+float CameraClass::GetCameraSpeed()
+{
+	return m_cameraSpeed;
+}
+
+void CameraClass::UpdateRotation(XMFLOAT2 offset)
+{
+	m_rotationY += offset.x * m_mouseSensitivity;
+	m_rotationX += offset.y * m_mouseSensitivity;
+
+	if (m_rotationX > 89.0f)
+		m_rotationX = 89.0f;
+	if (m_rotationX < -89.0f)
+		m_rotationX = -89.0f;
+	
+	Render(NONE, 0.0f);
+
 }
 
 
@@ -56,20 +79,23 @@ XMFLOAT3 CameraClass::GetRotation()
 // After rotation, we translate the position in 3D Space.
 // With position, lookAt and up vectors filled in, we use XMMatrixLookAtLH to create the view matrix that represents our camera
 
-void CameraClass::Render() {
+void CameraClass::Render(Camera_Movement direction, float deltaTime) {
 	XMFLOAT3 up, position, lookAt;
 	XMVECTOR upVector, positionVector, lookAtVector;
 	float yaw, pitch, roll;
 	XMMATRIX rotationMatrix;
 
-	up.x = 0.0f; up.y = 1.0f; up.z = 0.0;
+	up.x = 0.0f; up.y = 1.0f; up.z = 0.0f;
 	upVector = XMLoadFloat3(&up);
+
+	float velocity = m_cameraSpeed * deltaTime;
 
 	position.x = m_positionX;
 	position.y = m_positionY;
 	position.z = m_positionZ;
     positionVector = XMLoadFloat3(&position);
 
+	// also known as the front vector
 	lookAt.x = 0.0f;
 	lookAt.y = 0.0f;
 	lookAt.z = 1.0f;
@@ -81,9 +107,50 @@ void CameraClass::Render() {
 	rotationMatrix = XMMatrixRotationRollPitchYaw(pitch, yaw, roll);
 
 	lookAtVector = XMVector3TransformCoord(lookAtVector, rotationMatrix);
+	lookAtVector = XMVector3Normalize(lookAtVector);
 
-	m_viewMatrix = XMMatrixLookAtLH(positionVector, lookAtVector, upVector);
+	// Right Vector for movement
+	XMVECTOR rightVector = XMVector3Cross(upVector, lookAtVector);
+	rightVector = XMVector3Normalize(rightVector);
 
+	// Up Vector for movement
+	XMVECTOR objectUpVector = XMVector3Cross(lookAtVector, rightVector);
+	objectUpVector = XMVector3Normalize(objectUpVector);
+
+	XMFLOAT3 posVec = position;
+	XMVECTOR moveDirection = XMVectorZero();
+	
+	switch (direction)
+	{
+	case FORWARD:
+		moveDirection += lookAtVector;
+		break;
+	case BACKWARD:
+		moveDirection -= lookAtVector;
+		break;
+	case LEFT:
+		moveDirection -= rightVector;
+		break;
+	case RIGHT:
+		moveDirection += rightVector; 
+		break;
+	case UP:
+		moveDirection += objectUpVector;
+		break;
+	case DOWN:
+		moveDirection -= objectUpVector;
+		break;
+	}
+
+	if (direction != NONE) {
+		moveDirection = XMVector3Normalize(moveDirection);
+		positionVector += moveDirection * velocity;
+
+		XMStoreFloat3(&posVec, positionVector);
+		SetPosition(posVec.x, posVec.y, posVec.z);
+	}
+	
+	m_viewMatrix = XMMatrixLookAtLH(positionVector, positionVector + lookAtVector, upVector);
 }
 
 void CameraClass::GetViewMatrix(XMMATRIX& viewMatrix) {

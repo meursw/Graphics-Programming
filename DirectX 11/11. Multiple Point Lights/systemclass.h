@@ -35,6 +35,7 @@ private:
 	InputClass* m_Input;
 	ApplicationClass* m_Application;
 
+
 };
 
 // A callback function, that processes messages sent to a window.

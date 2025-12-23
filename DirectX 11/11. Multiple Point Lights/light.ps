@@ -41,9 +41,9 @@ float4 LightPixelShader(PixelInputType input) : SV_TARGET
 
 	for(i=0; i<NUM_LIGHTS; i++)
 	{
-        float coneSize = i+1;
+        float coneSize = (i + (180.0 / 3.14159))*0.4;
 		// Calculate the different amounts of light on this pixel based on the positions of the lights.
-        lightIntensity[i] = pow(saturate(dot(input.normal, input.lightPos[i])), coneSize*0.6);
+        lightIntensity[i] = smoothstep(cos(coneSize), 1, dot(input.normal, input.lightPos[i]));
         float dist = length(distance(input.lightPos[i], input.worldPos.xyz));
         float attenuation = Constant + Linear * dist + Exp * (dist * dist);
         lightIntensity[i] = lightIntensity[i] / attenuation;

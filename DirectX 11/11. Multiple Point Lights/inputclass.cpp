@@ -21,3 +21,13 @@ void InputClass::KeyUp(unsigned int input) {
 bool InputClass::isKeyDown(unsigned int key) {
 	return m_keys[key];
 }
+
+void InputClass::SetMousePosition(XMFLOAT2 mousePos)
+{
+	m_mousePosition = mousePos;
+}
+
+XMFLOAT2 InputClass::GetMousePosition()
+{
+	return m_mousePosition;
+}

@@ -1,4 +1,6 @@
 #pragma once
+#include <directxmath.h>
+using namespace DirectX;
 
 class InputClass {
 public:
@@ -13,6 +15,10 @@ public:
 
 	bool isKeyDown(unsigned int);
 
+	void SetMousePosition(XMFLOAT2);
+	XMFLOAT2 GetMousePosition();
+
 private:
 	bool m_keys[256];
+	XMFLOAT2 m_mousePosition;
 };

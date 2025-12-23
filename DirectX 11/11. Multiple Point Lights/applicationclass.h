@@ -7,6 +7,8 @@
 #include "textureshaderclass.h"
 #include "lightshaderclass.h"
 #include "lightclass.h"
+#include "timerclass.h"
+#include "inputclass.h"
 
 
 // GLOBALS
@@ -21,21 +23,26 @@ public:
 	ApplicationClass(const ApplicationClass&);
 	~ApplicationClass();
 
-	bool Initialize(int, int, HWND);
+	bool Initialize(int, int, HWND, InputClass*);
 	void Shutdown();
 	bool Frame();
 
 private:
-	bool Render(float);
+	bool Render();
 
 public:
 	D3DClass* m_Direct3D;
 	CameraClass* m_Camera;
 	ModelClass* m_Model;
+	
 	ColorShaderClass* m_ColorShader;
 	TextureShaderClass* m_TextureShader;
+	
 	LightShaderClass* m_LightShader;
 	LightClass* m_Lights;
 	int m_numLights;
+
+	TimerClass* m_Timer;
+	InputClass* m_Input;
 
 };
