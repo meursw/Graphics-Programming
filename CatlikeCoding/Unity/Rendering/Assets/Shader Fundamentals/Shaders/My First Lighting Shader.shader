@@ -15,75 +15,46 @@ Shader "Custom/My First Lighting Shader" {
             Tags {
                 "LightMode" = "ForwardBase"
             }
+            
             CGPROGRAM
-            #pragma target 3.0
-            #pragma vertex MyVertexProgram
-            #pragma fragment MyFragmentProgram
 
-            #include "UnityPBSLighting.cginc"
+			#pragma target 3.0
 
-            float4 _Tint;
-            float _Metallic;
-            float _Smoothness;
+            #pragma multi_compile _ VERTEXLIGHT_ON
 
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
+			#pragma vertex MyVertexProgram
+			#pragma fragment MyFragmentProgram
 
-            struct VertexData {
-                float4 position : POSITION;
-                float3 normal : NORMAL;
-                float3 uv : TEXCOORD0;
-            };
+            #define FORWARD_BASE_PASS
 
-            struct Interpolators {
-                float4 position: SV_POSITION;
-                float2 uv : TEXCOORD0;
-                float3 normal : TEXCOORD1;
-                float3 worldPos: TEXCOORD2;
-            };
+			#include "My Lighting.cginc"
 
-            Interpolators MyVertexProgram(VertexData v) {
-                Interpolators i;
-                i.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                i.position = UnityObjectToClipPos(v.position);
-                i.worldPos = mul(unity_ObjectToWorld, v.position);
-                i.normal = UnityObjectToWorldNormal(v.normal);
-                i.normal = normalize(i.normal);
-                return i;
-            }
-
-            float4 MyFragmentProgram (Interpolators i) : SV_TARGET {
-				i.normal = normalize(i.normal);
-                float3 lightDir = _WorldSpaceLightPos0.xyz;
-                float3 viewDir = normalize(_WorldSpaceCameraPos - i.worldPos);
-
-                float3 lightColor = _LightColor0.rgb;
-                float3 albedo = tex2D(_MainTex, i.uv).rgb * _Tint.rgb;
-
-                float3 specularTint;
-                float oneMinusReflectivity;
-                albedo = DiffuseAndSpecularFromMetallic(
-					albedo, _Metallic, specularTint, oneMinusReflectivity
-				);
-
-                UnityLight light;
-                light.color = lightColor;
-                light.dir = lightDir;
-                light.ndotl = DotClamped(i.normal, lightDir);
-
-                UnityIndirect indirectLight;
-				indirectLight.diffuse = 0;
-				indirectLight.specular = 0;
-
-                return UNITY_BRDF_PBS(albedo, specularTint,
-                    oneMinusReflectivity, _Smoothness,
-                    i.normal, viewDir,
-                    light, indirectLight);
-                
-			}
-
-            ENDCG
+			ENDCG
         }
+
+        Pass {
+            Tags {
+                "LightMode" = "ForwardAdd"
+            }
+            Blend One One
+            ZWrite Off
+            
+            CGPROGRAM
+
+			#pragma target 3.0
+
+            #pragma multi_compile_fwdadd 
+
+			#pragma vertex MyVertexProgram
+			#pragma fragment MyFragmentProgram
+            
+            
+			#include "My Lighting.cginc"
+
+			ENDCG
+            
+        }
+
     }
 
 }
