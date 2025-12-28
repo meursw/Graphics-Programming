@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://beborlnluhew3"]
-
-[ext_resource type="Script" path="res://Scripts/Graph/graph.gd" id="1_58s3t"]
-[ext_resource type="PackedScene" uid="uid://dn77lgoi5hk7r" path="res://Scenes/point.tscn" id="2_r4mdd"]
-
-[node name="Graph" type="Node3D"]
-script = ExtResource("1_58s3t")
-point_scn = ExtResource("2_r4mdd")
