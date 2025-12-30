@@ -39,10 +39,14 @@ Four points lights with oscillating attenuation
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/spotlight-attenuation.gif)
 Four spot lights with oscillating attenuation
 
-
 # Tutorial 12
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/2dimages.gif)
 |:--:|
 2D Rendering. Also showcasing custom made camera movement.
+
+# Tutorial 13
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/2dsprites.gif)
+|:--:|
+2D Animated Sprites. 93 frames, 20ms per frame.
 
 
