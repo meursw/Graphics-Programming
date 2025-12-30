@@ -1,0 +1,6 @@
+4
+../DX11/Assets/Sprites/Rect Sprite/sprite01.tga
+../DX11/Assets/Sprites/Rect Sprite/sprite02.tga
+../DX11/Assets/Sprites/Rect Sprite/sprite03.tga
+../DX11/Assets/Sprites/Rect Sprite/sprite04.tga
+250
