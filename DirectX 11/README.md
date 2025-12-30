@@ -40,5 +40,9 @@ Four points lights with oscillating attenuation
 Four spot lights with oscillating attenuation
 
 
+# Tutorial 12
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/2dimages.gif)
+|:--:|
+2D Rendering. Also showcasing custom made camera movement.
 
 
