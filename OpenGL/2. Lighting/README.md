@@ -10,3 +10,8 @@ Phong Lighting
 
 - # 2.3 Materials
 ![Phong Lighting](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/2.%20Lighting/Results/materials.gif)
+
+- # 2.4 Lighting Maps
+![Lighting Maps](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/2.%20Lighting/Results/diffspecemis_maps.gif)
+|:-:|
+Diffuse, Specular and Emission maps.
