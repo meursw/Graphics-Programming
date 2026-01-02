@@ -56,5 +56,11 @@ Four spot lights with oscillating attenuation
 |:--:|
 2D Animated Sprites. 93 frames, 20ms per frame.
 
+- # 14-15. Font Engine & FPS Counters
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/fpscounter.gif)
+|:--:|
+Rendering an FPS counter by rendering text using a font texture.
+Rendering 10.000 models. As we can see, the GPU's frustum culling isn't enough to optimize this scene.
+In later chapters, we will implement CPU side frustum culling.
 
 
