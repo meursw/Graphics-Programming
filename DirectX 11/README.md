@@ -63,7 +63,7 @@ Rendering an FPS counter by rendering text using a font texture.
 Rendering 10.000 models. As we can see, the GPU's frustum culling isn't enough to optimize this scene.
 In later chapters, we will implement CPU side frustum culling.
 
-- # 16 Direct Input
+- # 16. Direct Input
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/directinput.gif)
 |:--:|
 Using Direct Input 8.
