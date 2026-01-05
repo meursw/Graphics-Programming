@@ -209,7 +209,7 @@ bool InputClass::IsKeyPressed(char key)
 
 void InputClass::GetAllPressedKeys(std::string& str)
 {
-	for (auto value : keyMap)
+	for (auto& value : keyMap)
 	{
 		if (m_keyboardState[value.first] & 0x80)
 			str += value.second;
