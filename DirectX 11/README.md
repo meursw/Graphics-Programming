@@ -32,7 +32,6 @@
 |:--:|
 *Ambient and Diffuse Lighting. Light positioned at (-1,0,0).*
 
-
 - # 10. Specular Lighting
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/Specular%20Lighting.png)
 |:--:|
@@ -69,5 +68,9 @@ In later chapters, we will implement CPU side frustum culling.
 Using Direct Input 8.
 Rendering keyboard input to the screen.
 
+- # 17. Multitexturing
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/multitexturing.png)
+Multitexturing.
+Rendering a model with 2 textuers and blending them together.
 
 
