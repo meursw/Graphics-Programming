@@ -69,10 +69,11 @@ Using Direct Input 8.
 Rendering keyboard input to the screen.
 
 - # 17. Multitexturing
-![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/multitexturing.png)
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/multitexturing2tex.png)
 |:--:|
 Multitexturing.
 Rendering a model with 2 textuers and blending them together.
+
 
 
 
