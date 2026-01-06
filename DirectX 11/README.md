@@ -74,6 +74,11 @@ Rendering keyboard input to the screen.
 Multitexturing.
 Rendering a model with 2 textuers and blending them together.
 
+- # 18-19. Light Maps & Alpha Mapping
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/lightandalphamaps.png)
+|:--:|
+Using light maps to avoid lighting calculation on the left.
+Blending between two textures with an alpha map on the right.
 
 
 
