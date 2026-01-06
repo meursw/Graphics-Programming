@@ -70,7 +70,9 @@ Rendering keyboard input to the screen.
 
 - # 17. Multitexturing
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/multitexturing.png)
+|:--:|
 Multitexturing.
 Rendering a model with 2 textuers and blending them together.
+
 
 
