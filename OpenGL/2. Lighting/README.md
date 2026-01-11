@@ -20,7 +20,7 @@ Diffuse, Specular and Emission maps.
 ![Pointlight](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/2.%20Lighting/Results/pointlight.gif)
 |:-:|
 ![Spotlight](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/2.%20Lighting/Results/spotlight.gif)
-|:-:|
 Pointlight and Spotlight.
+
 
 
