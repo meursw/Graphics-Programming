@@ -22,6 +22,9 @@ Diffuse, Specular and Emission maps.
 ![Spotlight](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/2.%20Lighting/Results/spotlight.gif)
 Pointlight and Spotlight.
 
-
+- # 2.6 Multiple Lights
+![Multiple Lights](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/2.%20Lighting/Results/mullights.png)
+|:-:|
+One direction light, one spotlight and 4 point lights scattred across the scene.
 
 
