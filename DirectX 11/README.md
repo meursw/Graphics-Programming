@@ -83,7 +83,9 @@ Blending between two textures with an alpha map on the right.
 - # 20. Normal mapping
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/normalmaps.gif)
 |:--:|
-Normal mapping on a plane, a cube and a sphere. Tangent and bitangent vectors for the mesh are calculated on the CPU.
+Normal mapping on a plane, a cube and a sphere.
+Tangent and bitangent vectors for the mesh are calculated on the CPU.
+
 
 
 
