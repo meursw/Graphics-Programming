@@ -180,7 +180,7 @@ bool SpecMapShaderClass::SetShaderParametersDerived(ID3D11DeviceContext* deviceC
     int bufferNumber;
 
     // Set camera buffer
-    result = deviceContext->Map(m_lightBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &mappedResource);
+    result = deviceContext->Map(m_cameraBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &mappedResource);
     dataPtr = (CameraBufferType*)mappedResource.pData;
     dataPtr->cameraPosition = m_cameraPosition;
     dataPtr->padding = 0.0f;
