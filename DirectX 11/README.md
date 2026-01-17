@@ -92,11 +92,12 @@ Tangent and bitangent vectors for the mesh are calculated on the CPU.
 Specular mapping with normal mapping.
 
 - # 22. Managing Mulitple Shaders
-![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/shadermanager.png)
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/multipleshaders.png)
 |:--:|
 Wrote my own BaseShaderClass that other shader classes derive from.
 Here I use polymorphism to create an interface for rendering
 multiple shaders.
+
 
 
 
