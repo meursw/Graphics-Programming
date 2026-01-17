@@ -87,9 +87,10 @@ Normal mapping on a plane, a cube and a sphere.
 Tangent and bitangent vectors for the mesh are calculated on the CPU.
 
 - # 21. Specular mapping
-![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/specmapping.gif)
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/specmap.gif)
 |:--:|
 Specular mapping with normal mapping.
+
 
 
 
