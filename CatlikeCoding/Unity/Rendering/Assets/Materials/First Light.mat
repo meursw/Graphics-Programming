@@ -81,11 +81,11 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.635
     - _GlossyReflections: 1
-    - _Metallic: 0.343
+    - _Metallic: 0.504
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Smoothness: 0.452
+    - _Smoothness: 0.723
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
