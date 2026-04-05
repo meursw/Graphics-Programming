@@ -1,8 +1,8 @@
 #if !defined(MY_LIGHTING_INCLUDED)
 #define MY_LIGHTING_INCLUDED
 
-#include "AutoLight.cginc"
 #include "UnityPBSLighting.cginc"
+#include "AutoLight.cginc"
 
 float4 _Tint;
 float _Metallic;
@@ -18,14 +18,14 @@ sampler2D _DetailNormalMap;
 float _DetailBumpScale;
 
 struct VertexData {
-	float4 position : POSITION;
+	float4 vertex : POSITION;
 	float3 normal : NORMAL;
 	float4 tangent : TANGENT;
 	float3 uv : TEXCOORD0;
 };
 
 struct Interpolators {
-	float4 position: SV_POSITION;
+	float4 pos: SV_POSITION;
 	float4 uv : TEXCOORD0;
 	float3 normal : TEXCOORD1;
 
@@ -38,8 +38,10 @@ struct Interpolators {
 	
 	float3 worldPos: TEXCOORD4;
 
+	SHADOW_COORDS(5)
+
 	#if defined(VERTEXLIGHT_ON)
-		float3 vertexLightColor : TEXCOORD5;
+		float3 vertexLightColor : TEXCOORD6;
 	#endif
 };
 
@@ -64,8 +66,8 @@ Interpolators MyVertexProgram(VertexData v) {
 	i.uv.xy = TRANSFORM_TEX(v.uv, _MainTex);
 	i.uv.zw = TRANSFORM_TEX(v.uv, _DetailTex);
 
-	i.position = UnityObjectToClipPos(v.position);
-	i.worldPos = mul(unity_ObjectToWorld, v.position);
+	i.pos = UnityObjectToClipPos(v.vertex);
+	i.worldPos = mul(unity_ObjectToWorld, v.vertex);
 
 	i.normal = UnityObjectToWorldNormal(v.normal);
 	i.normal = normalize(i.normal);
@@ -77,20 +79,23 @@ Interpolators MyVertexProgram(VertexData v) {
 		i.binormal = CreateBinormal(i.normal, i.tangent, v.tangent.w);
 	#endif
 
+	TRANSFER_SHADOW(i);
+
 	ComputeVertexLightColor(i);
 	return i;
 }
 
 UnityLight CreateLight (Interpolators i) {
 	UnityLight light;
-	
-	#if defined(POINT) || defined(SPOT) || defined(POINT_COOKIE)
-	light.dir = normalize(_WorldSpaceLightPos0.xyz - i.worldPos);
+
+	#if defined(POINT) || defined(POINT_COOKIE) || defined(SPOT)
+		light.dir = normalize(_WorldSpaceLightPos0.xyz - i.worldPos);
 	#else
-	light.dir = _WorldSpaceLightPos0.xyz;
+		light.dir = _WorldSpaceLightPos0.xyz;
 	#endif
-	
-	UNITY_LIGHT_ATTENUATION(attenuation, 0, i.worldPos);
+
+	UNITY_LIGHT_ATTENUATION(attenuation, i, i.worldPos);
+
 	light.color = _LightColor0.rgb * attenuation;
 	light.ndotl = DotClamped(i.normal, light.dir);
 	return light;
