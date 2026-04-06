@@ -59,7 +59,10 @@ Four spot lights with oscillating attenuation
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/fpscounter.gif)
 |:--:|
 Rendering an FPS counter by rendering text using a font texture.
-Rendering 10.000 models. As we can see, the GPU's frustum culling isn't enough to optimize this scene.
+Rendering 10.000 objects. 
+All of this data gets sent to the GPU 
+Then the GPU has to test a lot of individual triangles 
+to determine if it should render them or not. 
 In later chapters, we will implement CPU side frustum culling.
 
 - # 16. Direct Input
