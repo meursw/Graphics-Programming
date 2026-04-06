@@ -98,6 +98,11 @@ Wrote my own BaseShaderClass that other shader classes derive from.
 Here I use polymorphism to create an interface for rendering
 multiple shaders.
 
+- # 23. Frustum Culling
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/frustum-culling.gif)
+|:--:|
+Using frustum culling to optimize rendering 900 objects.
+I'm using a worse bounding box to show when the objects get skipped.
 
 
 
