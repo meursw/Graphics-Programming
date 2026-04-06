@@ -108,8 +108,8 @@ I'm using a worse bounding box to show when the objects get skipped.
 Skipped.
 
 - # 25. Render to Texture
-|:--:|
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/render-to-texture.png)
+|:--:|
 Rendering a scene into a texture, instead of the back buffer, and then rendering that texture on a 3D plane.
 
 
