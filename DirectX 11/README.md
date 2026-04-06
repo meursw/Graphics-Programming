@@ -105,7 +105,6 @@ Using frustum culling to optimize rendering 900 objects.
 I'm using a worse bounding box to show when the objects get skipped.
 
 - # 24. Loading Maya Models
-|:--:|
 Skipped.
 
 - # 25. Render to Texture
