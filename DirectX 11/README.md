@@ -116,6 +116,8 @@ Skipped.
 Rendering a scene into a texture, instead of the back buffer.
 Then rendering that texture on a 3D plane.
 
-
-
+- # 26. Fog
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/expfog.gif)
+|:--:|
+Exponential fog.
 
