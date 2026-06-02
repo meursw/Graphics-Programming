@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dscq63kp7shtd"]
+
+[ext_resource type="Shader" uid="uid://dmpedhubodmbp" path="res://Shaders/sine_waves.gdshader" id="1_6c6ic"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gf72d"]
+render_priority = 0
+shader = ExtResource("1_6c6ic")
+shader_parameter/bumpiness = 0.5
+shader_parameter/displacement = 0.2
+shader_parameter/frequency = 4.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_opc01"]
+subdivide_width = 31
+
+[node name="SineWavesPlane" type="Node3D" unique_id=1502577974]
+
+[node name="Plane" type="MeshInstance3D" parent="." unique_id=679822428]
+material_override = SubResource("ShaderMaterial_gf72d")
+mesh = SubResource("PlaneMesh_opc01")

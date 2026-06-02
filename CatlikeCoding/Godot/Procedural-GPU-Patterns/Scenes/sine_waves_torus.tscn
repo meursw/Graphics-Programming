@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dnw8avtgmlopq"]
+
+[ext_resource type="Shader" uid="uid://dmpedhubodmbp" path="res://Shaders/sine_waves.gdshader" id="1_fb2hy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gf72d"]
+render_priority = 0
+shader = ExtResource("1_fb2hy")
+shader_parameter/bumpiness = 0.212
+shader_parameter/displacement = 0.2
+shader_parameter/frequency = 4.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_fb2hy"]
+
+[node name="SineWavesPlane" type="Node3D" unique_id=1502577974]
+
+[node name="Torus" type="MeshInstance3D" parent="." unique_id=679822428]
+material_override = SubResource("ShaderMaterial_gf72d")
+mesh = SubResource("TorusMesh_fb2hy")
