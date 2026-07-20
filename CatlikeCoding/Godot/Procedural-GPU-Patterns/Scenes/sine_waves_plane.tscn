@@ -5,15 +5,21 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gf72d"]
 render_priority = 0
 shader = ExtResource("1_6c6ic")
-shader_parameter/bumpiness = 0.5
-shader_parameter/displacement = 0.2
-shader_parameter/frequency = 4.0
+shader_parameter/animation_speed = Vector2(0.1, 0.2)
+shader_parameter/bumpiness = Vector2(0.5, 0.5)
+shader_parameter/displacement = 0.200000057
+shader_parameter/frequency = Vector2(4, 2)
+shader_parameter/function = 3
+shader_parameter/colors_per_vertex = false
+shader_parameter/derivatives_per_vertex = false
+shader_parameter/vertex_displacement = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_opc01"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_6c6ic"]
 subdivide_width = 31
+subdivide_depth = 31
 
 [node name="SineWavesPlane" type="Node3D" unique_id=1502577974]
 
 [node name="Plane" type="MeshInstance3D" parent="." unique_id=679822428]
 material_override = SubResource("ShaderMaterial_gf72d")
-mesh = SubResource("PlaneMesh_opc01")
+mesh = SubResource("PlaneMesh_6c6ic")
