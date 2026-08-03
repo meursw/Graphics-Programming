@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b0txxlov4gc5l"]
+
+[ext_resource type="Shader" uid="uid://cpjvy7ifltbao" path="res://Hashing/hashing.gdshader" id="1_8leuw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jxqn"]
+render_priority = 0
+shader = ExtResource("1_8leuw")
+shader_parameter/frequency = 64.0
+shader_parameter/hash_seed = 12345
+shader_parameter/visualization = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6c6ic"]
+subdivide_width = 31
+subdivide_depth = 31
+
+[node name="SineWavesPlane" type="Node3D" unique_id=1502577974]
+
+[node name="Plane" type="MeshInstance3D" parent="." unique_id=679822428]
+material_override = SubResource("ShaderMaterial_0jxqn")
+mesh = SubResource("PlaneMesh_6c6ic")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dscq63kp7shtd"]
 
-[ext_resource type="Shader" uid="uid://dmpedhubodmbp" path="res://Shaders/sine_waves.gdshader" id="1_6c6ic"]
+[ext_resource type="Shader" uid="uid://dmpedhubodmbp" path="res://Sine Waves/sine_waves.gdshader" id="1_6c6ic"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gf72d"]
 render_priority = 0

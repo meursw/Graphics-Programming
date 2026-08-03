@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnw8avtgmlopq"]
 
-[ext_resource type="Shader" uid="uid://dmpedhubodmbp" path="res://Shaders/sine_waves.gdshader" id="1_fb2hy"]
+[ext_resource type="Shader" uid="uid://dmpedhubodmbp" path="res://Sine Waves/sine_waves.gdshader" id="1_fb2hy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gf72d"]
 render_priority = 0
@@ -12,6 +12,7 @@ shader_parameter/base_frequency = Vector2(2, 2)
 shader_parameter/octaves = 3
 shader_parameter/lacunarity = 2.0000000149012003
 shader_parameter/persistance = 0.55000000819566
+shader_parameter/adaptive_fractal_scale = false
 shader_parameter/function = 3
 shader_parameter/colors_per_vertex = false
 shader_parameter/derivatives_per_vertex = false
