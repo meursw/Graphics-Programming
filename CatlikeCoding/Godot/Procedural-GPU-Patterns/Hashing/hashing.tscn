@@ -1,20 +1,47 @@
 [gd_scene format=3 uid="uid://b0txxlov4gc5l"]
 
 [ext_resource type="Shader" uid="uid://cpjvy7ifltbao" path="res://Hashing/hashing.gdshader" id="1_8leuw"]
+[ext_resource type="Shader" uid="uid://b4bwra46fll6g" path="res://Other Shaders/pixelate_BrightContSat.gdshader" id="2_0jxqn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0jxqn"]
 render_priority = 0
 shader = ExtResource("1_8leuw")
-shader_parameter/frequency = 64.0
-shader_parameter/hash_seed = 12345
+shader_parameter/frequency = 362.0
+shader_parameter/hash_seed = 12455
 shader_parameter/visualization = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6c6ic"]
 subdivide_width = 31
 subdivide_depth = 31
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sb1sl"]
+shader = ExtResource("2_0jxqn")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0
+shader_parameter/pixel_size = 6.00999999977648
+
 [node name="SineWavesPlane" type="Node3D" unique_id=1502577974]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=104620714]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
 
 [node name="Plane" type="MeshInstance3D" parent="." unique_id=679822428]
 material_override = SubResource("ShaderMaterial_0jxqn")
 mesh = SubResource("PlaneMesh_6c6ic")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1574216997]
+transform = Transform3D(1, 0, 0, 0, 0.8935987, 0.44886678, 0, -0.44886678, 0.8935987, 0, 0.6344838, 1.4625815)
+
+[node name="Pixelate" type="CanvasLayer" parent="." unique_id=1390116760]
+
+[node name="ColorRect" type="ColorRect" parent="Pixelate" unique_id=618573624]
+z_index = 10
+material = SubResource("ShaderMaterial_sb1sl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

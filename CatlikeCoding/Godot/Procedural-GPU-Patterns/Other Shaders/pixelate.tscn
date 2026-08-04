@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://iova5xfgod8b"]
+
+[ext_resource type="Shader" uid="uid://b4bwra46fll6g" path="res://Other Shaders/pixelate_BrightContSat.gdshader" id="1_sxn3g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jsa1d"]
+shader = ExtResource("1_sxn3g")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0
+shader_parameter/pixel_size = 12.00999999977648
+
+[node name="Pixelate" type="CanvasLayer" unique_id=1390116760]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=618573624]
+z_index = 10
+material = SubResource("ShaderMaterial_jsa1d")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 352.0
+grow_horizontal = 2
+grow_vertical = 2
