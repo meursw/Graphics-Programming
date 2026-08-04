@@ -121,3 +121,7 @@ Then rendering that texture on a 3D plane.
 |:--:|
 Exponential fog.
 
+- # 27. Fog
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/clippingplanes.png)
+|:--:|
+Clipping plane on negative X axis.
