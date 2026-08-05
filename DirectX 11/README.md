@@ -121,7 +121,12 @@ Then rendering that texture on a 3D plane.
 |:--:|
 Exponential fog.
 
-- # 27. Fog
+- # 27. Clipping Planes
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/clippingplanes.png)
 |:--:|
 Clipping plane on negative X axis.
+
+- # 28. Texture Translation
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/textranslation.gif)
+|:--:|
+Continious texture translation on both axis.
