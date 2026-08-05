@@ -122,7 +122,7 @@ Then rendering that texture on a 3D plane.
 Exponential fog.
 
 - # 27. Clipping Planes
-![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/clippingplanes.png)
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/clipping_planes.png)
 |:--:|
 Clipping plane on negative X axis.
 
