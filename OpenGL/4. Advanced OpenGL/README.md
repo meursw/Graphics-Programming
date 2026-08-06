@@ -8,3 +8,7 @@ Linear depth values ranged from 0-1.
 |:-:|
 Object outlining using stencil buffer.
 
+- # 4.3 Blending
+![Stencil Testing](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/4.%20Advanced%20OpenGL/Results/blending.png)
+|:-:|
+Blending with sorted transparent objects from farthest to nearest.
