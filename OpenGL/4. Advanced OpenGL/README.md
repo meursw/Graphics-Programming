@@ -12,3 +12,8 @@ Object outlining using stencil buffer.
 ![Stencil Testing](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/4.%20Advanced%20OpenGL/Results/blending.png)
 |:-:|
 Blending with sorted transparent objects from farthest to nearest.
+
+- # 4.4 Face culling
+![Stencil Testing](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/4.%20Advanced%20OpenGL/Results/faceculling.png)
+|:-:|
+Culling the front faces of a cube.
