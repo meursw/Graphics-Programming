@@ -9,11 +9,17 @@ Linear depth values ranged from 0-1.
 Object outlining using stencil buffer.
 
 - # 4.3 Blending
-![Stencil Testing](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/4.%20Advanced%20OpenGL/Results/blending.png)
+![Blending](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/4.%20Advanced%20OpenGL/Results/blending.png)
 |:-:|
 Blending with sorted transparent objects from farthest to nearest.
 
 - # 4.4 Face culling
-![Stencil Testing](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/4.%20Advanced%20OpenGL/Results/faceculling.png)
+![Face culling](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/4.%20Advanced%20OpenGL/Results/faceculling.png)
 |:-:|
 Culling the front faces of a cube.
+
+- # 4.5 Framebuffers
+![Framebuffers](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/4.%20Advanced%20OpenGL/Results/emboss.png)
+|:-:|
+Rendering scene to a texture and then using rendering that texture to a quad on the screen.
+Applied an emboss kernel for post processing of the image. 

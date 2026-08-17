@@ -48,7 +48,8 @@ vec3 hash_to_vec3(uint hash) {
 }
 
 void fragment() {
-	vec2 coordinates = floor(frequency * (UV - 0.5));
+	vec2 worldPos = (INV_VIEW_MATRIX * vec4(VERTEX,1.0)).xz;
+	vec2 coordinates = floor(frequency * (worldPos - 0.5));
 
 	Hasher h = hasher(hash_seed);
 	h = hasher(h, coordinates.x);

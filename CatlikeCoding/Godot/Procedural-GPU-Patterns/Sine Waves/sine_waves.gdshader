@@ -97,7 +97,8 @@ PatternSample sample_fractal_pattern(vec2 uv) {
 
 
 void vertex() {
-	PatternSample pattern_sample = sample_fractal_pattern(UV + animation_speed * TIME);
+	vec2 worldPos = (MODEL_MATRIX * vec4(VERTEX,1.0)).xz;
+	PatternSample pattern_sample = sample_fractal_pattern(worldPos + animation_speed * TIME);
 	
 	if(colors_per_vertex) {
 		COLOR.rgb = colorize(pattern_sample.v);
@@ -112,7 +113,8 @@ void vertex() {
 }
 
 void fragment() {
-	PatternSample pattern_sample = sample_fractal_pattern(UV + animation_speed * TIME);
+	vec2 worldPos = (INV_VIEW_MATRIX * vec4(VERTEX,1.0)).xz;
+	PatternSample pattern_sample = sample_fractal_pattern(worldPos + animation_speed * TIME);
 	if(colors_per_vertex){
 		ALBEDO = COLOR.rgb;
 	} else {
