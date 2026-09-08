@@ -7,10 +7,13 @@ render_priority = 0
 shader = ExtResource("1_8leuw")
 shader_parameter/hash_seed = 12455
 shader_parameter/visualization = 2
-shader_parameter/base_frequency = 57.8
-shader_parameter/octaves = 4
-shader_parameter/lacunarity = 5.0
+shader_parameter/staggered_animation = true
+shader_parameter/base_frequency = 16.0
+shader_parameter/octaves = 3
+shader_parameter/lacunarity = 2.0
 shader_parameter/persistence = 0.5
+shader_parameter/base_animation = 1.0
+shader_parameter/temporal_lacunarity = 2.0
 shader_parameter/adaptive_fractal_scale = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6c6ic"]
