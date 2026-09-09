@@ -130,3 +130,10 @@ Clipping plane on negative X axis.
 ![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/textranslation.gif)
 |:--:|
 Continious texture translation on both axis.
+
+- # 29. Transparency
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/transparency.gif)
+|:--:|
+Transparent object in front of opaque object using alpha blending.
+Opaque objects are drawn first then we enable alpha testing.
+No sorting of transparent objects based on distance from the camera.
