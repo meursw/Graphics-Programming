@@ -137,3 +137,8 @@ Continious texture translation on both axis.
 Transparent object in front of opaque object using alpha blending.
 Opaque objects are drawn first then we enable alpha testing.
 No sorting of transparent objects based on distance from the camera.
+
+- # 30. Reflection
+![Image](https://github.com/meursw/Graphics-Programming/blob/main/DirectX%2011/Results/reflection.gif)
+|:--:|
+Planar reflection on the Y axis.
