@@ -7,12 +7,19 @@ Hasher hasher(uint seed) {
 }
 
 Hasher hasher(Hasher h, float f) {
+	// xxHash algorithim
+	// Shuffles the bits around after adding the f value.
 	h.bits += floatBitsToUint(f) * 3266489917u;
+	// Rotate the bits 17 steps to the left, in two steps.
 	h.bits = (h.bits << 17u) | (h.bits >> 32u - 17u);
+	// Shuffle again.
 	h.bits *= 668265263u;
 	return h;
 }
 
+// Returns the bits of the hash value.
+// Before doing so, perform an Avalanche Effect:
+// A minuscule change to the input produces a radically different output.
 uint hash(Hasher h) {
 	h.bits ^= h.bits >> 15u;
 	h.bits *= 2246822519u;

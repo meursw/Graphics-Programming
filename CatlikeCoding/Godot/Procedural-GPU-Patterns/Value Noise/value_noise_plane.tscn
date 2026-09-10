@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d13jdogm8fivk"]
+
+[ext_resource type="Shader" uid="uid://c4835nt1t7ees" path="res://Value Noise/value_noise.gdshader" id="1_w8al5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jxqn"]
+render_priority = 0
+shader = ExtResource("1_w8al5")
+shader_parameter/hash_seed = 0
+shader_parameter/animation = true
+shader_parameter/colored = true
+shader_parameter/color_min = Color(1, 0, 0, 1)
+shader_parameter/color_mid = Color(0, 0, 0, 1)
+shader_parameter/color_max = Color(1, 1, 1, 1)
+shader_parameter/base_frequency = 16.0
+shader_parameter/octaves = 4
+shader_parameter/lacunarity = 2.0
+shader_parameter/persistence = 0.5
+shader_parameter/base_animation = 1.0
+shader_parameter/temporal_lacunarity = 2.0
+shader_parameter/adaptive_fractal_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6c6ic"]
+subdivide_width = 31
+subdivide_depth = 31
+
+[node name="ValueNoisePlane" type="Node3D" unique_id=1502577974]
+
+[node name="Plane" type="MeshInstance3D" parent="." unique_id=679822428]
+material_override = SubResource("ShaderMaterial_0jxqn")
+mesh = SubResource("PlaneMesh_6c6ic")
