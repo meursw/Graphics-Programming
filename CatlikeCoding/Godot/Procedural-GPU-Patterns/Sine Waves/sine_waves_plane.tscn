@@ -2,6 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://dmpedhubodmbp" path="res://Sine Waves/sine_waves.gdshader" id="1_6c6ic"]
 [ext_resource type="Shader" uid="uid://b4bwra46fll6g" path="res://Other Shaders/pixelate_BrightContSat.gdshader" id="2_x1grh"]
+[ext_resource type="Shader" uid="uid://c4835nt1t7ees" path="res://Value Noise/value_noise.gdshader" id="3_80q22"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gf72d"]
 render_priority = 0
@@ -26,10 +27,31 @@ subdivide_depth = 512
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jsa1d"]
 shader = ExtResource("2_x1grh")
-shader_parameter/brightness = 1.0
-shader_parameter/contrast = 1.5000000223518
-shader_parameter/saturation = 0.40000000596048
-shader_parameter/pixel_size = 12.00999999977648
+shader_parameter/brightness = 1.10000001639132
+shader_parameter/contrast = 2.0
+shader_parameter/saturation = 0.60000000894072
+shader_parameter/pixel_size = 6.00999999977648
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jxqn"]
+render_priority = 0
+shader = ExtResource("3_80q22")
+shader_parameter/hash_seed = 0
+shader_parameter/animation = true
+shader_parameter/colored = true
+shader_parameter/color_min = Color(1, 0, 0, 1)
+shader_parameter/color_mid = Color(0, 0, 0, 1)
+shader_parameter/color_max = Color(1, 1, 1, 1)
+shader_parameter/base_frequency = 16.0
+shader_parameter/octaves = 4
+shader_parameter/lacunarity = 2.0
+shader_parameter/persistence = 0.5
+shader_parameter/base_animation = 1.0
+shader_parameter/temporal_lacunarity = 2.0
+shader_parameter/adaptive_fractal_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gfetm"]
+subdivide_width = 31
+subdivide_depth = 31
 
 [node name="SineWavesPlane" type="Node3D" unique_id=1502577974]
 
@@ -38,6 +60,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Plane" type="MeshInstance3D" parent="." unique_id=679822428]
+visible = false
 material_override = SubResource("ShaderMaterial_gf72d")
 mesh = SubResource("PlaneMesh_6c6ic")
 
@@ -56,3 +79,9 @@ anchor_bottom = 1.0
 offset_bottom = 352.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ValueNoisePlane" type="Node3D" parent="." unique_id=1602816948]
+
+[node name="Plane" type="MeshInstance3D" parent="ValueNoisePlane" unique_id=1244295589]
+material_override = SubResource("ShaderMaterial_0jxqn")
+mesh = SubResource("PlaneMesh_gfetm")

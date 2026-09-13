@@ -23,3 +23,12 @@ Culling the front faces of a cube.
 |:-:|
 Rendering the scene to a texture and then rendering that texture to a quad on the screen.
 Applied an emboss kernel for post processing of the image. 
+
+- # 4.6 Cubemaps
+![Cubemaps-Refract](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/4.%20Advanced%20OpenGL/Results/refract.png)
+|:-:|
+Using a cubemap for a skybox and then sampling it with a refraction vector.
+
+![Cubemaps-Reflect](https://github.com/meursw/Graphics-Programming/blob/main/OpenGL/4.%20Advanced%20OpenGL/Results/reflect.png)
+|:-:|
+Doing the same but with a reflection vector
